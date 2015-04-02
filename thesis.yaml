@@ -1,0 +1,41 @@
+---
+title: This is the Name of my Thesis
+author: 
+  first: I. B.
+  last: Scriptor
+otherdegrees: ["B.A., North Dakota State University, 2005", "M.S., University of Reno, 2007"]
+degree:
+  long: Doctor of Philosophy
+  short: Ph.D., Rocket Science
+department: 
+  designation: Department of 
+  name: Rocket Science
+date: 2015
+advisor: 
+  title: Prof.
+  name: Ed Visor
+readers:
+  second: Prof. Rachel Goddard
+  third: Ms. Thora Nea
+abstract:  
+  length: 
+  	long: TRUE
+  content: "Often the abstract will be long enough to require
+	more than one page, in which case the macro
+	``OnePageChapter'' should *not* be used.
+
+
+	But this one isn't, so it should."
+dedication: To all of the fluffy kitties.
+acknowledgements: "Here's where you acknowledge folks who helped.
+	But keep it short, i.e., no more than one page,
+	as required by the Grad School Specifications."
+macros: macros.tex
+chapters: 
+  - chapter1.tex
+  - chapter2.tex
+bibliography: TRUE
+appendix: 
+  - appendixA.tex
+  - appendixB.tex
+---

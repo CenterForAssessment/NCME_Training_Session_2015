@@ -5,43 +5,38 @@
 
 %%%%%%%%%%%%   All the preamble material:   %%%%%%%%%%%%
 
-\title{This is the Name of my Thesis}
+\title{$title$}
 
-\author{I.~B.}{Scriptor}
+\author{$author.first$}{$author.last$}
 
-\otherdegrees{B.A., North Dakota State University, 2005 \\
-	      M.S., University of Reno, 2007}
+\otherdegrees{$for(otherdegrees)$$otherdegrees$$sep$ \\
+	      $endfor$}
 
-\degree{Doctor of Philosophy}		%  #1 {long descr.}
-	{Ph.D., Rocket Science}		%  #2 {short descr.}
+\degree{$degree.long$}		%  #1 {long descr.} Doctor of Philosophy
+	{$degree.short$}		%  #2 {short descr.} Ph.D., Rocket Science
 
-\dept{Department of}			%  #1 {designation}
-	{Rocket Science}		%  #2 {name}
+\dept{$department.designation$}	%  #1 {designation}
+	{$department.name$}		%  #2 {name}
 
-\advisor{Prof.}				%  #1 {title}
-	{Ed Visor}			%  #2 {name}
+\advisor{$advisor.title$}			%  #1 {title}
+	{$advisor.name$}			%  #2 {name}
 
-\reader{Prof.~Rachel Goddard}		%  2nd person to sign thesis
-\readerThree{Ms.~Thora Nea}		%  3rd person to sign thesis
+\reader{$readers.second$}		%  2nd person to sign thesis
+$if(readers.third)$\readerThree{$readers.third$} $endif$	%  3rd person to sign thesis
+$if(readers.fourth)$\readerFour{$readers.fourth$} $endif$	%  4th person to sign thesis
+$if(readers.fifth)$\readerFive{$readers.fifth$} $endif$		%  5th person to sign thesis
 
-\abstract{  \OnePageChapter	% because it is very short
+\abstract{  $if(abstract.length)$ $if(abstract.length.short)$ \OnePageChapter $endif$ $endif$	% \OnePageChapter if it is short
 
-	Often the abstract will be long enough to require
-	more than one page, in which case the macro
-	``$\backslash$OnePageChapter'' should {\it not}
-	be used.
-
-	But this one isn't, so it should.
+	$abstract.content$
 	}
 
 \dedication[Dedication]{	% NEVER use \OnePageChapter here.
-	To all of the fluffy kitties.
+	$dedication$
 	}
 
 \acknowledgements{	\OnePageChapter	% *MUST* BE ONLY ONE PAGE!
-	Here's where you acknowledge folks who helped.
-	But keep it short, i.e., no more than one page,
-	as required by the Grad School Specifications.
+	$acknowledgements$
 	}
 
 % \IRBprotocol{E927F29.001X}	% optional!
@@ -55,24 +50,36 @@
 % \emptyLoT	% use this if there is no List of Tables
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%       BEGIN DOCUMENT...         %%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%                                   BEGIN DOCUMENT...                                   %%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
-\input macros.tex
-\input chapter1.tex
-\input chapter2.tex
+
+$if(macros)$
+\input $macros$
+$endif$
+
+$for(chapters)$
+\input $chapters$
+$endfor$
 
 %%%%%%%%%   then the Bibliography, if any   %%%%%%%%%
-\bibliographystyle{plain}	% or "siam", or "alpha", etc.
-\nocite{*}		% list all refs in database, cited or not
-\bibliography{refs}		% Bib database in "refs.bib"
+\bibliographystyle{plain}		% or "siam", or "alpha", etc.
+\nocite{*}					% list all refs in database, cited or not
+\bibliography{refs}			% Bib database in "refs.bib"
+
+%$if(bibliography)$
+%\chapter{References}		% Pandoc will put in references if section called "References" exists
+%$endif$
 
 %%%%%%%%%   then the Appendices, if any   %%%%%%%%%
+$if(appendix)$
 \appendix
-\input appendixA.tex
-\input appendixB.tex
+$for(appendix)$
+\input $appendix$
+$endfor$
+$endif$
 
 
 \end{document}
