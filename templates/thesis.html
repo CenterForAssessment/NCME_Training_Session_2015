@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"$if(lang)$ lang="$lang$" xml:lang="$lang$"$endif$>
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+$for(author-meta)$
+<meta name="author" content="$author-meta$" />
+$endfor$
+
+$if(date-meta)$
+<meta name="date" content="$date-meta$" />
+$endif$
+
+<title>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$</title>
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+$if(highlightjs)$
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="$highlightjs$/$if(highlightjs-theme)$$highlightjs-theme$$else$default$endif$.css"
+      $if(html5)$$else$type="text/css" $endif$/>
+<script src="$highlightjs$/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+$endif$
+
+$if(highlighting-css)$
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+$highlighting-css$
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+$endif$
+
+$for(css)$
+<link rel="stylesheet" href="$css$" $if(html5)$$else$type="text/css" $endif$/>
+$endfor$
+
+</head>
+
+<body>
+
+$if(toc)$
+<div id="TOC", class="TOC">
+<p>Table of Contents:</p>
+$toc$
+</div>
+$endif$
+
+<div id="document">
+
+<div class="content-node document selected">
+
+<div class="content">
+<div class="document-title">$title$</div>
+
+<div class="authors" id="authors">$author.first$ $author.last$</div>
+
+$for(otherdegrees)$
+<address class="author_afil">$otherdegrees$</address>
+$endfor$
+
+<div class="lead" id="document_lead"><p style='text-align:center; text-indent: 0px;'>
+A thesis submitted to the <br></br>
+Faculty of the Graduate School of the  <br></br>
+University of Colorado in partial fulfillment  <br></br>
+of the requirements for the degree of  <br></br>
+$degree.long$ <br></br>
+$degree.short$ <br></br>
+</p></div>
+
+$if(date)$
+<p class="published">$date$</p>
+$endif$
+
+<p></p>
+<p></p>
+<p></p>
+<div style='page-break-after:always;'></div>
+
+<div><p>$author.first$ $author.last$</p></div>
+<div><p>$title$</p></div>
+<div><p>Thesis directed by $advisor.title$ $advisor.name$</p></div>
+<div><p><em>Additional Readers: </em><br></br></p></div>
+<div><p style='text-indent: 65px ;'>$readers.second$</p>
+$if(readers.third)$<p style='text-indent: 65px ;'>$readers.third$</p>$endif$
+$if(readers.fourth)$<p style='text-indent: 65px ;'>$readers.fourth$</p>$endif$
+$if(readers.fifth)$<p style='text-indent: 65px ;'>$readers.fifth$</p>$endif$ 
+</div>
+
+$if(abstract)$
+<div class="lead" id="document_lead"><p style='text-align:justify;'>$abstract.content$</p></div>
+$endif$
+
+<p></p>
+<p></p>
+<div style='page-break-after:always;'></div>
+<div class="document-subtitle">Dedication</div>
+<p> $dedication$ </p>
+
+<p></p>
+<p></p>
+<div style='page-break-after:always;'></div>
+<div class="document-subtitle">Acknowledgements</div>
+<p> $acknowledgements$ </p>
+<div style='page-break-after:always; padding-bottom: 100px;'></div>
+</div>
+
+<div class="content-node section">
+  $body$
+</div>
+
+</div>
+
+</body>
+</html>
