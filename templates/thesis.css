@@ -1,7 +1,7 @@
 /* document */
 
 #document {
-  counter-reset: figure 0 section 0;
+  counter-reset: figure 0 section 0 table 0;
 }
 
 
@@ -16,15 +16,18 @@ h1 {
 }
 
 .content-node .caption {
-  margin: 0px 80px;
+  margin: 0px 100px;
   padding: 15px 0;
   text-align:justify;
   font-style: italic;
-  text-indent: 0px;
-  margin-bottom: 25px;
+  padding-left: 35px ;
 }
-.caption > p {
+
+#document .caption {
+	margin-right: 5px;
+	text-indent: -35px;
 }	
+
 .content-node .caption.empty {
   display: none;
 }
@@ -66,14 +69,6 @@ h1 {
 .content-node.image,
 .content-node.resource {
   counter-increment: figure;
-}
-.content-node .caption {
-  margin: 0px 100px;
-  padding: 15px 0;
-  text-align:justify;
-  font-style: italic;
-  padding-left: 50px ;
-  text-indent: -50px ;
 }
 .content-node .caption.empty {
   display: none;
@@ -363,6 +358,7 @@ p+p {
 .content-node.document .published {
   font-size: 18px;
   text-align: center;
+  text-indent: 0px;
   padding-top: 10px;
   padding-bottom: 50px;
 }
@@ -575,8 +571,17 @@ caption {
   width: 275%;   
   max-width: 650px;
   padding-bottom: 10px;
-  padding-left: 65px ;
-  text-indent: -65px ;
+  padding-left: 35px ;
+  text-indent: -35px ;
+  counter-increment: table;
+  text-align:justify;
+  font-style: italic;
+}
+
+caption:before {
+  content: "Table " counter(section) "." counter(figure) " ";
+  font-weight: bold;
+  padding-right: 12px ;	
 }
 
 blockquote:before,
