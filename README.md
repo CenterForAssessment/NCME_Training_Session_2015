@@ -22,6 +22,6 @@ for [**R**](http://cran.r-project.org/).
 * [pandoc](http://johnmacfarlane.net/pandoc/), a universal document/format converter that utilizes [LaTeX](http://johnmacfarlane.net/pandoc/installing.html)
 
 
-<a href="http://www.rstudio.com/"><img src="https://raw.githubusercontent.com/CenterForAssessment/SGP_Resources/master/misc/RStudio.png" align="left" hspace="12" vspace="15"></a> 
+<a href="http://www.rstudio.com/"><img src="http://www.rstudio.com/wp-content/uploads/2014/03/blue-250.png" align="left" hspace="12" vspace="15"></a> 
 [RStudio](http://www.rstudio.com/) a free and open source [integrated development environment (IDE)](http://en.wikipedia.org/wiki/Integrated_development_environment) 
 
