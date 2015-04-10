@@ -22,5 +22,8 @@ use include:
 for [**R**](http://cran.r-project.org/).
 * [pandoc](http://johnmacfarlane.net/pandoc/), a universal document/format converter that utilizes [LaTeX](http://johnmacfarlane.net/pandoc/installing.html).
 
+One of the most difficult parts of using modern software/tools for this type of research is just getting your work environment (i.e., your laptop) set up with the tools. But once
+set up, the benefits are huge.  Welcome to the bleeding edge. :smile:   
+
 
 ### GitHub
