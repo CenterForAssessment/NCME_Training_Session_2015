@@ -11,10 +11,17 @@ to ideas and technologies associated with [open science](http://en.wikipedia.org
 
 Traditional workflows associated with statistics/measurement research currently runs counter to many of the principles associated with open science and reproducible research. 
 In this training session, we introduce participants to some widely used [open source](http://en.wikipedia.org/wiki/Open_source) tools that overcome many of the limitations of 
-the traditional statistics/measurement research workflow. 
+the closed traditional statistics/measurement research workflow. Modern development tools and practices can be utilized as part of statistics/measurement 
 
 As the title of the title of the training session suggests, participants will need a computer with some open source programs installed. The programs/tools we'll
-use include: [GitHub](https://github.com/), a web-based [Git](http://en.wikipedia.org/wiki/Git_(software)) repository hosting service, [RStudio](http://www.rstudio.com/)
-a free and open source [integrated development environment (IDE)](http://en.wikipedia.org/wiki/Integrated_development_environment) for [*R*](http://cran.r-project.org/) 
+use include: 
 
+* [GitHub](https://github.com/), a web-based [Git](http://en.wikipedia.org/wiki/Git_(software)) repository hosting service.
+* [RStudio](http://www.rstudio.com/) a free and open source [integrated development environment (IDE)](http://en.wikipedia.org/wiki/Integrated_development_environment) 
+for [**R**](http://cran.r-project.org/).
+* [pandoc](http://johnmacfarlane.net/pandoc/), a universal document/format converter that utilizes [LaTeX](http://johnmacfarlane.net/pandoc/installing.html)
+
+
+<a href="http://www.rstudio"><img src="https://raw.githubusercontent.com/CenterForAssessment/SGP_Resources/master/misc/SGP4_Logo_2.png" align="left" hspace="12" vspace="15"></a> 
+[RStudio](http://www.rstudio.com/) a free and open source [integrated development environment (IDE)](http://en.wikipedia.org/wiki/Integrated_development_environment) 
 
