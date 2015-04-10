@@ -15,6 +15,6 @@ the traditional statistics/measurement research workflow.
 
 As the title of the title of the training session suggests, participants will need a computer with some open source programs installed. The programs/tools we'll
 use include: [GitHub](https://github.com/), a web-based [Git](http://en.wikipedia.org/wiki/Git_(software)) repository hosting service, [RStudio](http://www.rstudio.com/)
-a free and open source [integrated development environment (IDE)](http://en.wikipedia.org/wiki/Integrated_development_environment) for [***R***](http://cran.r-project.org/) 
+a free and open source [integrated development environment (IDE)](http://en.wikipedia.org/wiki/Integrated_development_environment) for [*R*](http://cran.r-project.org/) 
 
 
