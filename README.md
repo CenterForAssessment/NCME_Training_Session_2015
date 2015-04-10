@@ -1,7 +1,7 @@
 2015 NCME Training Session
 ==========================
 
-### Leveraging Open Source Software and Tools for Statistics/Measurement Research
+## Leveraging Open Source Software and Tools for Statistics/Measurement Research
 
 [![Join the chat at https://gitter.im/CenterForAssessment/NCME_Training_Session_2015](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/CenterForAssessment/NCME_Training_Session_2015?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![License](http://img.shields.io/badge/license-GPL%203-brightgreen.svg?style=flat)](https://github.com/CenterForAssessment/NCME_Training_Session_2015/blob/master/LICENSE.md)
 
@@ -20,9 +20,7 @@ use include:
 * [:octocat: GitHub](https://github.com/), a web-based [Git](http://en.wikipedia.org/wiki/Git_(software)) repository hosting service.
 * [RStudio](http://www.rstudio.com/) a free and open source [integrated development environment (IDE)](http://en.wikipedia.org/wiki/Integrated_development_environment) 
 for [**R**](http://cran.r-project.org/).
-* [pandoc](http://johnmacfarlane.net/pandoc/), a universal document/format converter that utilizes [LaTeX](http://johnmacfarlane.net/pandoc/installing.html)
+* [pandoc](http://johnmacfarlane.net/pandoc/), a universal document/format converter that utilizes [LaTeX](http://johnmacfarlane.net/pandoc/installing.html).
 
 
-<a href="http://www.rstudio.com/"><img src="http://www.rstudio.com/wp-content/uploads/2014/03/blue-250.png" align="left" hspace="12" vspace="15"></a> 
-[RStudio](http://www.rstudio.com/) a free and open source [integrated development environment (IDE)](http://en.wikipedia.org/wiki/Integrated_development_environment) 
-
+### GitHub
