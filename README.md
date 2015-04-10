@@ -27,3 +27,12 @@ set up, the benefits are huge.  Welcome to the bleeding edge. :smile:
 
 
 ### GitHub
+
+Version control of content is fundamental to reproducibility. Version control has been used by software developers for decades as a way of collaborating and managing the chaos that
+ensues when multiple programmers are developing using the same software codebase. [Git](http://en.wikipedia.org/wiki/Git_(software)) is a modern distributed version control system created by 
+[Linus Torvalds](http://en.wikipedia.org/wiki/Linus_Torvalds), the creator of the [Linux](http://en.wikipedia.org/wiki/Linux) operating system. [GitHub](https://github.com/) is a 
+web-based version control system based upon [Git](http://en.wikipedia.org/wiki/Git_(software)) with many other bells and whistles that is extremely popular for open source developement. 
+[Netflix](http://netflix.github.io/#repo) uses [GitHub](https://github.com/) for its source code development. Beyond source code development, the whole idea of “version control” has been 
+implemented with [German law](http://bundestag.github.io/gesetze/) where all laws [GitHub](https://github.com/) in a version controlled fashion so people can examine the law and its development.
+
+For this training session, we'll use a go to the [GitHub](https://github.com/) website and download a 
