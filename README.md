@@ -13,10 +13,11 @@ Traditional workflows associated with statistics/measurement research currently 
 In this training session, we introduce participants to some widely used [open source](http://en.wikipedia.org/wiki/Open_source) tools that overcome many of the limitations of 
 the closed traditional statistics/measurement research workflow. Modern development tools and practices can be utilized as part of statistics/measurement 
 
-As the title of the title of the training session suggests, participants will need a computer with some open source programs installed. The programs/tools we'll
+As the title of the title of the training session suggests, participants will need a laptop computer with some open source programs installed to participate in the
+training session. The information that follows introduces the software/tools and provides information on how to install The programs/tools we'll
 use include: 
 
-* [GitHub](https://github.com/), a web-based [Git](http://en.wikipedia.org/wiki/Git_(software)) repository hosting service.
+* :octocat: [GitHub](https://github.com/), a web-based [Git](http://en.wikipedia.org/wiki/Git_(software)) repository hosting service.
 * [RStudio](http://www.rstudio.com/) a free and open source [integrated development environment (IDE)](http://en.wikipedia.org/wiki/Integrated_development_environment) 
 for [**R**](http://cran.r-project.org/).
 * [pandoc](http://johnmacfarlane.net/pandoc/), a universal document/format converter that utilizes [LaTeX](http://johnmacfarlane.net/pandoc/installing.html)
