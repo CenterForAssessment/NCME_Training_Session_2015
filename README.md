@@ -35,4 +35,36 @@ web-based version control system based upon [Git](http://en.wikipedia.org/wiki/G
 [Netflix](http://netflix.github.io/#repo) uses [GitHub](https://github.com/) for its source code development. Beyond source code development, the whole idea of “version control” has been 
 implemented with [German law](http://bundestag.github.io/gesetze/) where all laws [GitHub](https://github.com/) in a version controlled fashion so people can examine the law and its development.
 
-For this training session, we'll use a go to the [GitHub](https://github.com/) website and download a 
+For this training session, we'll be using [GitHub](https://github.com/) for version control. You'll need to do two things:
+
+* Create a [GitHub](https://github.com/) account. Public repositories are free and 
+* Install a [GitHub](https://github.com/) client on your compute. [Mac](https://mac.github.com/), [Windows](https://windows.github.com/), or [Linux](http://www.maketecheasier.com/6-useful-graphical-git-client-for-linux/). Git is a command line application, but it's easier to start with a GUI client.
+
+
+## Training Session Schedule
+
+**8:00 to 9:15** Overview of open research/dissemination and the tools/platforms that support it. First hour will be a presentation/overview and the last 15 minutes we’ll 
+confirm everyone is set up with the appropriate software on their computers. Advanced instructions will be sent out regarding software needed for the training session.
+
+**9:15 to 9:30** Break
+
+**9:30 to 11:00** Introduction to [GitHub](https://github.com/) and version control. This part of the training session will introduce users to the version control via GitHub. Users will learn how to 
+fork a repository, modify that fork, make and accept pull requests.
+
+**11:00 to 12:00** Introduction to [GitHub Pages](https://pages.github.com/), the static HTML website part of all GitHub repositories. [GitHub Pages](https://pages.github.com/) allows projects 
+to produce websites associated with projects that can include highly sophisticated components including interactive graphics, blogs, and vector math fonts. With a basic distributed 
+version control repository as its foundation.
+
+**12:00 to 1:00** Lunch
+
+**1:00 to 2:00** Introduction to [**R**](http://cran.r-project.org/) and its system of user created packages. [**R**](http://cran.r-project.org/) is an open source environment for statistical
+analysis that has growth tremendously in use over the last decade. A major part of its success is its extensability: Users can create their own packages that extend the functionality of 
+[**R**](http://cran.r-project.org/). These packages can be distributed via [**R**](http://cran.r-project.org/)'s [CRAN]([**R**](http://cran.r-project.org/) based package installation
+or utilize [GitHub](https://github.com/) as the package repository. In a very real sense, one is *standing on the shoulder of giants*!
+
+**2:00 to 3:00** 
+
+**3:00 to 3:15**
+
+**3:15 to 5:00**
+
