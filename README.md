@@ -64,7 +64,7 @@ or utilize [GitHub](https://github.com/) as the package repository. In a very re
 
 **2:00 to 3:00** 
 
-**3:00 to 3:15**
+**3:00 to 3:15** Break
 
 **3:15 to 5:00**
 
