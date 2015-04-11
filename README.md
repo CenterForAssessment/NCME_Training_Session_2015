@@ -9,9 +9,9 @@ Welcome to the GitHub repository for the 2015 NCME Training Session: Leveraging 
 This version controlled repository contains or links to all the resources associated with the training session.  During this training session you'll be introduced
 to ideas and technologies associated with [open science](http://en.wikipedia.org/wiki/Open_science) and [reproducible research](http://en.wikipedia.org/wiki/Reproducibility). 
 
-Traditional workflows associated with statistics/measurement research currently runs counter to many of the principles associated with open science and reproducible research. 
+Traditional work-flows associated with statistics/measurement research currently runs counter to many of the principles associated with open science and reproducible research. 
 In this training session, we introduce participants to some widely used [open source](http://en.wikipedia.org/wiki/Open_source) tools that overcome many of the limitations of 
-the closed traditional statistics/measurement research workflow. Modern development tools and practices can be utilized as part of statistics/measurement 
+the closed traditional statistics/measurement research work-flow. Modern development tools and practices can be utilized as part of statistics/measurement 
 
 As the title of the title of the training session suggests, participants will need a laptop computer with some open source programs installed to participate in the
 training session. The information that follows introduces the software/tools and provides information on how to install The programs/tools we'll
@@ -28,10 +28,10 @@ set up, the benefits are huge.  Welcome to the bleeding edge. :smile:
 
 ### GitHub
 
-Version control of content is fundamental to reproducibility. Version control has been used by software developers for decades as a way of collaborating and managing the chaos that
+Version control of content is fundamental to reproducible results. Version control has been used by software developers for decades as a way of collaborating and managing the chaos that
 ensues when multiple programmers are developing using the same software codebase. [Git](http://en.wikipedia.org/wiki/Git_(software)) is a modern distributed version control system created by 
 [Linus Torvalds](http://en.wikipedia.org/wiki/Linus_Torvalds), the creator of the [Linux](http://en.wikipedia.org/wiki/Linux) operating system. [GitHub](https://github.com/) is a 
-web-based version control system based upon [Git](http://en.wikipedia.org/wiki/Git_(software)) with many other bells and whistles that is extremely popular for open source developement. 
+web-based version control system based upon [Git](http://en.wikipedia.org/wiki/Git_(software)) with many other bells and whistles that is extremely popular for open source development. 
 [Netflix](http://netflix.github.io/#repo) uses [GitHub](https://github.com/) for its source code development. Beyond source code development, the whole idea of “version control” has been 
 implemented with [German law](http://bundestag.github.io/gesetze/) where all laws [GitHub](https://github.com/) in a version controlled fashion so people can examine the law and its development.
 
