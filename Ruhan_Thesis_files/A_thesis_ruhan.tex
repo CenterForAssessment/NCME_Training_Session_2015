@@ -1,0 +1,95 @@
+\documentclass[defaultstyle,11pt,nonumh4,inlineh4]{thesis}
+
+\usepackage{amssymb}		% to get all AMS symbols
+\usepackage{graphicx}		% to insert figures
+\usepackage{apacite}
+\usepackage{ctable}
+\usepackage{amsfonts, amsmath, amsthm}
+\usepackage{multirow}
+\usepackage{enumerate}
+\usepackage{url}
+\usepackage{amsmath,siunitx,booktabs,caption}
+\usepackage{booktabs,fixltx2e}
+\usepackage[flushleft]{threeparttable}
+\usepackage{listings}
+%%%%%%%%%%%%   All the preamble material:   %%%%%%%%%%%%
+
+\title{Investigating Diagnostic Inferences from Learning Progressions}
+
+\author{Ruhan}{Circi Kizil}
+
+\otherdegrees{B.S., Bogazici University, Turkey, 2005 \\
+	M.S., Bogazici University,Turkey, 2009 \\
+   M.S., Marmara University,Turkey, 2010 }
+
+\degree{DOCTOR OF PHILOSOPHY}		%  #1 {long descr.}
+	{Ph.D., Research and Evaluation Methodology}		%  #2 {short descr.}
+
+\dept{School of Education\\ }			%  #1 {designation}
+	{Department of Research and Evaluation Methodology}		%  #2 {name}
+
+\advisor{Dr.}				%  #1 {title}
+	{~Derek Briggs}			%  #2 {name}
+
+\reader{Dr.~Lorie Shepard}		%  2nd person to sign thesis
+\readerThree{Dr.~Erin Furtak}		%  3rd person to sign thesis
+\readerFour{Dr.~Andy Maul}
+\readerFive{Dr.~Michael Stallings}
+
+\abstract{  
+Over the past two decades, the education community has developed new frameworks to better understand student learning and respond accordingly. Over the same period of time, in the field of psychometrics, models have been developed to extract detailed information about students' strengths and weaknesses in a content domain. In my dissertation, I propose a study that evaluates and compares the inferences that can be supported through the lens of three psychometric models applied to assessments of student understanding along a two learning progressions in science. 
+
+In this study, I will use the term of learning progression (LP) as a theoretical and hypothetical frame that shows how student learning progresses across predefined developmental levels \cite{CorcoranMosherRogat2009}. In theory at least, LPs can be used to provide insights into the evolution of a student's learning process. These progressions allow educators and researchers to track the advancement of the student's understanding of a topic, from virtually no understanding of a novice to a complex and sophisticated understanding of an expert. In addition, learning progressions pinpoint the depth in the level of sophistication of a student's understanding.
+
+The tool(s) used to observe student learning play a central role in learning progressions. These tools should facilitate the extraction of diagnostic feedback, so that users understand the students' current learning level and needs in order to progress to the next step. LP assessments could serve this purpose if they have diagnostic value \cite{steedle2008}. These assessments are likewise important for collecting validity evidence on hypothesized learning progressions. The potential utility of LPs is balanced against the difficulties inherent in developing and modeling them. In what follows, I propose an examination of the latter by systematically examining and comparing the viability of two approaches; a) Item Response Theory (IRT) modeling, and b) diagnostic classification modeling (DCM). 
+
+	%% Often the abstract will be long enough to require
+	%% more than one page, in which case the macro
+	%% ``$\backslash$OnePageChapter'' should {\it not}
+	%% be used.
+
+	%% But this one isn't, so it should.
+	}
+
+\dedication[Dedication]{	% NEVER use \OnePageChapter here
+Dedicated to my family and Turkish black tea.
+}
+
+\acknowledgements{\OnePageChapter	% *MUST* BE ONLY ONE PAGE!
+My advisor\\
+Family\\
+Friends 
+}
+
+%\ToCisShort	% use this only for 1-page Table of Contents
+
+%\LoFisShort	% use this only for 1-page Table of Figures
+% \emptyLoF	% use this if there is no List of Figures
+
+\LoTisShort	% use this only for 1-page Table of Tables
+% \emptyLoT	% use this if there is no List of Tables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%       BEGIN DOCUMENT...         %%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+
+\input introduction.tex
+\input methodology.tex
+\input results.tex
+
+\bibliographystyle{apacite}
+\bibliography{diss}
+
+
+
+\end{document}
+%%%There is a problem in reading the bib file, the proposed solution is
+   % run latex
+   % run bibtex (on actual file not the tex)
+   % run latex
+   % run latex in the command line 
+bibtex A_thesis.aux
