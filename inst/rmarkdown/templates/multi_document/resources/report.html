@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"$if(lang)$ lang="$lang$" xml:lang="$lang$"$endif$>
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+$for(author-meta)$
+<meta name="author" content="$author-meta$" />
+$endfor$
+
+$if(date-meta)$
+<meta name="date" content="$date-meta$" />
+$endif$
+
+<title>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$</title>
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+$if(highlightjs)$
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="$highlightjs$/$if(highlightjs-theme)$$highlightjs-theme$$else$default$endif$.css"
+      $if(html5)$$else$type="text/css" $endif$/>
+<script src="$highlightjs$/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+$endif$
+
+$if(highlighting-css)$
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+$highlighting-css$
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+$endif$
+
+$for(css)$
+<link rel="stylesheet" href="$css$" $if(html5)$$else$type="text/css" $endif$/>
+$endfor$
+
+</head>
+
+<body>
+
+$if(toc)$
+
+<div id="TOC", class="TOC">
+<p>Table of Contents:</p>
+$toc$
+<!--
+$if(bibliography)$
+<ul>
+<li></li>
+<li><a href="#references">References</a></li>
+<li></li>
+</ul>
+$endif$
+-->
+</div>
+$endif$
+
+<div id="document">
+
+$for(include-before)$
+$include-before$
+$endfor$
+
+<div class="content-node document selected">
+
+$if(title)$
+<div class="content">
+<div class="document-title">$title$</div>
+$if(subtitle)$
+<div class="document-subtitle" title="">$subtitle$</div>
+$endif$
+$for(author)$
+$if(author.name)$
+<div class="authors" id="authors">$author.name$</div>
+$if(author.affiliation)$
+<address class="author_afil">$author.affiliation$</address>
+$endif$
+$if(author.email)$
+<address class="author_email" href="mailto:#">$author.email$</address>
+$endif$
+$else$
+<div class="authors" id="authors">$author$</div>
+$endif$
+$endfor$
+$if(date)$
+<p class="published" style='text-indent: 0px;'>$date$</p>
+$endif$
+$if(abstract)$
+<div class="lead" id="document_lead"><p style='text-align:center;'>$abstract$</p></div>
+$endif$
+</div>
+$endif$
+
+<div class="content-node section">$body$</div>
+
+</div>
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+
+</body>
+</html>
