@@ -38,7 +38,7 @@ implemented with [German law](http://bundestag.github.io/gesetze/) where all law
 For this training session, we'll be using [GitHub](https://github.com/) for version control. You'll need to do two things:
 
 * Create a [GitHub](https://github.com/) account. Public repositories are free and 
-* Install a [GitHub](https://github.com/) client on your compute. [Mac](https://mac.github.com/), [Windows](https://windows.github.com/), or [Linux](http://www.maketecheasier.com/6-useful-graphical-git-client-for-linux/). Git is a command line application, but it's easier to start with a GUI client.
+* Install a [GitHub](https://github.com/) client on your computer. [Mac](https://mac.github.com/), [Windows](https://windows.github.com/), or [Linux](http://www.maketecheasier.com/6-useful-graphical-git-client-for-linux/). Git is a command line application, but it's easier to start with a GUI client.
 
 ### RStudio
 
@@ -50,9 +50,21 @@ free and open source [integrated development environment (IDE)](http://en.wikipe
 specifically for developing tools using a computer language. In the case of [RStudio](http://www.rstudio.com/), the environment is specifically designed for developing "data products" using
 [**R**](http://cran.r-project.org/). 
 
+For this training session, we'll be using [RStudio](http://www.rstudio.com/) for creating open and re-usable code for statistical analysis; You'll need to:
+
+* Install [RStudio](http://www.rstudio.com/) on your laptop.
+
 ### pandoc
 
+[pandoc](http://johnmacfarlane.net/pandoc/) is a universal document/format converter that utilizes [LaTeX](http://johnmacfarlane.net/pandoc/installing.html). Open research in the 21st
+century requires distribution of results across multiple media and platforms. "Create once and distribute everywhere" is the dream of content creators. To make this dream a reality requires
+conversion from a base content document to multiple other formats. The [pandoc](http://johnmacfarlane.net/pandoc/) library allows for such conversions and is used extensively. 
 
+For this training session, we'll be using [pandoc](http://johnmacfarlane.net/pandoc/) for export to multiple formats. [pandoc](http://johnmacfarlane.net/pandoc/) itself requires
+[LaTeX](http://johnmacfarlane.net/pandoc/installing.html) for some conversions. You'll need to:
+
+* Install [pandoc](http://johnmacfarlane.net/pandoc/) for your operating system.
+* Using the instructions provided on the [pandoc](http://johnmacfarlane.net/pandoc/) page, install [LaTeX](http://johnmacfarlane.net/pandoc/installing.html) for your operating system. 
 
 
 ## Training Session Schedule
