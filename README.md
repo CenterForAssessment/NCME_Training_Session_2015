@@ -46,7 +46,14 @@ For this training session, we'll be using [GitHub](https://github.com/) for vers
 statistical analysis software](http://r4stats.com/articles/popularity/). Much of [**R**](http://cran.r-project.org/)'s popularity stems from it being open source (and free!) together with
 its extensible nature. As a programming language, [**R**](http://cran.r-project.org/) has become prominent in recent years as a tool performing high level analytics. As a programming language,
 [**R**](http://cran.r-project.org/) has begun borrowing many tools from the programming world. One of the most prominent among them is [RStudio](http://www.rstudio.com/) a 
-free and open source [integrated development environment (IDE)](http://en.wikipedia.org/wiki/Integrated_development_environment). 
+free and open source [integrated development environment (IDE)](http://en.wikipedia.org/wiki/Integrated_development_environment). An integrated development environment is a tool designed 
+specifically for developing tools using a computer language. In the case of [RStudio](http://www.rstudio.com/), the environment is specifically designed for developing "data products" using
+[**R**](http://cran.r-project.org/). 
+
+### pandoc
+
+
+
 
 ## Training Session Schedule
 
