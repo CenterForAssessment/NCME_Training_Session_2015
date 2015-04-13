@@ -1,0 +1,18 @@
+---
+title: "Report Title:"
+subtitle: "A Subtitle to the Report"
+author:
+  - name: Report First Author
+  - name: Report Second Author
+date: "`r Sys.Date()`"
+abstract: "DRAFT REPORT - DO NOT CITE! <br></br> This report is not ready for Primetime yet."
+bibliography: "default"
+output: SGPreports::multi_document
+
+---
+
+<!--SGPreport--> <!--DO NOT DELETE THE 'SGPreport' COMMENT (You CAN delete this one...)-->
+
+#  Introduction
+
+#  References

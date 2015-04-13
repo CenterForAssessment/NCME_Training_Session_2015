@@ -1,0 +1,214 @@
+\documentclass[12pt]{article}
+\usepackage[margin=0.915in]{geometry}
+
+%%%
+%%%             BEGIN Damian Preamble
+%%%   Preface commands for pdfLaTeX output
+%%%
+
+%%
+%% Calling relevant packages
+%%
+
+\usepackage[%
+pdfstartview={FitV}, 
+colorlinks=true,
+menucolor=DarkGray,
+linkcolor=MidnightBlue,
+citecolor=MidnightBlue,
+urlcolor=OrangeRed]{hyperref}
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf}
+
+%% From pandoc default: Begin
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+ %% From pandoc default: Begin
+
+%\usepackage[hyper]{apacite}
+\usepackage[svgnames]{xcolor}
+\usepackage{rotating,bm,amsmath,amsfonts,amssymb,indentfirst,lscape,fancybox,fancyvrb,listings,pdfpages}
+\usepackage[pagestyles]{titlesec}
+%\usepackage{ucs}
+
+%%
+%% Format changes for chapter and section commands
+%%
+
+%\input{onesidedheader.tex}
+
+%%
+%% Chapter declarations
+%%
+
+
+%%
+%% Section declarations
+%%
+
+%%
+%% Subsection declarations
+%%
+
+
+%%
+%% Subsubsection declarations
+%%
+
+%%
+%% Listings setup information
+%%
+
+\lstset{language=R, frame=ltrb, framesep=5pt, xleftmargin=12pt, xrightmargin=5pt,
+       numbers=none, breaklines=true, fancyvrb=true,
+       breakatwhitespace=true, captionpos=b, abovecaptionskip=1.5ex,
+       backgroundcolor=\color{Cornsilk},
+       basicstyle=\small\color{DarkSlateGrey},
+       keywordstyle=\ttfamily\color{DarkSlateGrey},
+       identifierstyle=\ttfamily\color{DarkSlateGrey}\bfseries, 
+       commentstyle=\color{Fuchsia},
+       stringstyle=\ttfamily,
+       showstringspaces=false}
+
+%%
+%% Header and Footer Specification 
+%% TO ACTIVATE THE HEADER/FOOTER, ONE MUST PLACE \pagestyle{plain} 
+%% followed by \pagestyle{damian} in the document
+%%
+
+\widenhead{0.14in}{0.14in}
+
+\renewpagestyle{plain}{}
+
+\newpagestyle{damian}[\sffamily]{
+\headrule
+\sethead[\sectiontitle][\chaptertitle][\thepage]
+  {\sectiontitle}{\chaptertitle}{\thepage}
+
+\footrule
+\setfoot[][\raisebox{-.85ex}[0pt]{\NavigationBar}][]
+{}{\raisebox{-.85ex}[0pt]{\NavigationBar}}{}
+	\newcommand{\NavigationBar}{%
+	  \Acrobatmenu{PrevPage}{Previous}\hspace{.5cm}
+	  \Acrobatmenu{NextPage}{Next}\hspace{.5cm}
+	  \Acrobatmenu{FirstPage}{First}\hspace{.5cm}
+	  \Acrobatmenu{LastPage}{Last}\hspace{.5cm}
+	  \Acrobatmenu{GoBack}{Back}\hspace{.5cm}
+	  \Acrobatmenu{Quit}{Quit}%
+}
+}
+
+%%
+%% Custom specifications, commands, and colors
+%%
+
+\definecolor{DarkGray}{cmyk}{0,0,0,.624}
+\newcommand{\R}{{\sffamily \textup{R}}}
+\newcommand{\MlwiN}{{\sffamily \textup{MlwiN}}}
+\newcommand{\Sweave}{{\sffamily \textup{Sweave}}}
+\newcommand{\sssty}{\scriptscriptstyle}
+\newcommand{\bigdot}{\ensuremath{\hspace{-.3ex}\bm{.}\hspace{-.05ex}}}
+\renewcommand{\abstractname}{$if(abstract.name)$$abstract.name$$else$Abstract$endif$}
+\renewcommand{\lstlistingname}{\R~Code Example}
+\renewcommand{\arraystretch}{1.2}
+\setlength{\fboxsep}{4mm}
+\setlength{\fboxrule}{0.4pt}
+
+%%
+%%		END Damian Preamble
+%%
+
+\hypersetup{%
+  pdftitle={ $if(title-meta)$$title-meta$ $else$ $title$ $endif$},
+  pdfauthor={$for(author)$ $if(author.name)$ $author.name$ $else$ $author$ $endif$ $sep$,$endfor$},
+  pdfcreator={$for(author)$$if(author.name)$ $author.name$ $else$ $author$ $endif$ $sep$,$endfor$},
+  pdfkeywords={$for(keywords)$$keywords$ $endfor$},
+  bookmarks=true} % pdfproducer={pdfLaTeX}
+
+\usepackage{caption}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{booktabs}
+
+$if(numbersections)$
+\setcounter{secnumdepth}{3}
+$else$
+\setcounter{secnumdepth}{0}
+$endif$
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+
+
+%\usepackage{pdfdraftcopy}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% \usepackage{bbm}
+\DeclareMathAlphabet{\mathbbm}{U}{bbm}{m}{n}
+\SetMathAlphabet\mathbbm{bold}{U}{bbm}{bx}{n}
+\DeclareMathAlphabet{\mathbbmss}{U}{bbmss}{m}{n}
+\SetMathAlphabet\mathbbmss{bold}{U}{bbmss}{bx}{n}
+\DeclareMathAlphabet{\mathbbmtt}{U}{bbmtt}{m}{n}
+
+\begin{document}
+
+$if(macros)$
+\input $macros$
+$endif$
+
+\newcommand{\pl}[1]{\textsf{PL#1}}
+\newcommand{\Cov}{\ensuremath{\mbox{\textsf{Cov}}}}
+\newcommand{\Diag}{\ensuremath{\mbox{\textsf{Diag}}}}
+\newcommand{\Bias}{\ensuremath{\mbox{\textsf{Bias}}}}
+\newcommand{\Astar}[1]{\ensuremath{#1^{^*}}}
+\thispagestyle{plain}
+\pagestyle{damian}
+
+\title{\textsf{\LARGE $title$ $if(subtitle)$ \\\medskip $subtitle$ $endif$}}
+\author{$for(author)$ $if(author.name)$ $author.name$ $if(author.affiliation)$ \\ $author.affiliation$ $endif$ $else$ $author$ $endif$ $sep$ \\ $endfor$}
+
+$if(date)$ \date{$date$} $else$ \date{\today} $endif$
+
+\maketitle
+
+\newpage
+
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+\newpage
+$endif$
+
+$body$
+
+$if(bibliography)$
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
+\bibliography{$bibliography$}
+$endif$
+
+
+$if(appendix)$
+\appendix
+$for(appendix)$
+\input $appendix$
+$endfor$
+$endif$
+
+
+\end{document}
+
+
