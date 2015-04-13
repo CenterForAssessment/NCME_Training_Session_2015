@@ -167,9 +167,18 @@ knit        : slidify::knit2slides
 >2. We can use git fetch upstream to get the updates from upstream repo
 >3. Go to your own repo and click "Pull requests" 
 
+
 ---
 
+## Github for collaboration
+###  Use Sweave for dynamic reporting 
+>1. Sweave is to weave in S:the traditional method of weaving Rnw files 
+>2. Dynamic reports and reproducible research using LaTeX
+>3. Create a new document and see if it is familiar to you!!!
 
+
+
+---
 ## Thank You
 
 
