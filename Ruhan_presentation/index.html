@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Use of Github for Shared LateX documents</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Use of Github for Shared LateX documents">
+  <meta name="author" content="Ruhan Circi">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Use of Github for Shared LateX documents</h1>
+    <h2>Version Control and Collaboration</h2>
+    <p>Ruhan Circi<br/>April 15th 2015</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>My inspration to use Github is Picasso</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Do you recognize this famous painting?</h3>
+
+<div style='text-align: center;'>
+    <img height='350' width='450' src='pictures/picasso.jpg' />
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>The steps that I will follow today</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol class = "build incremental">
+<li>What is LaTeX?</li>
+<li>Github Example<br>
+
+<ul>
+<li>Put your LaTeX document into your Github repository </li>
+<li>Branching,merging and dealing with conflicts </li>
+</ul></li>
+<li>Git to collaborate with others 
+
+<ul>
+<li>Fork a remote repository (this is on server side)</li>
+<li>Clone remote repo into your local<br></li>
+<li>Make the changes in your local and remote repo </li>
+<li>Sycncing a fork</li>
+<li>Get the changes from remote repo Fetch vs. Pull</li>
+<li>Git fetch upstream </li>
+<li>Submit pull request to project owner </li>
+</ul></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Are we ready to start?</h2>
+  </hgroup>
+  <article data-timings="">
+    <div style='text-align: center;'>
+    <img height='300' width='300' src='pictures/are_you_ready.jpg' />
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>LaTeX</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol class = "build incremental">
+<li>What is LateX? </li>
+<li>Steps to create a simple document:
+
+<ul>
+<li>Open the text editor</li>
+<li>Save a blank file (name it as &quot;latex_(your_initials)_trial.tex&quot;)</li>
+</ul></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Step-by-step LaTeX example</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol class = "build incremental">
+<li><p>Remember that you need backslash (&quot;\&quot;) for each command in LateX</p>
+
+<ul>
+<li>\documentclass[11pt]{article}</li>
+<li>\begin {document}</li>
+<li>\section {Welcome}</li>
+<li>\textit(Hello) \underline{from} \textbf{NCME}</li>
+<li>Happy to see you all. Let&#39;s start with some math.  Given that \((z+1)\) and \((z+4)\),<br></li>
+<li>The area is presented by \(Area=z^2+5z+4\) </li>
+<li>\subsection[10]{context} We will cover good things!!!</li>
+<li>\end{document}</li>
+</ul></li>
+<li><p>Create another LateX document</p></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Github: Put your document into your repository</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol class = "build incremental">
+<li><p>Open your command line (assuming your file is under Directory1)</p>
+
+<ul>
+<li>cd Directory1 (change your working directory) </li>
+<li>git init      (Create or restart an existing repo)</li>
+<li>git add <file name> (add files into staging area )</li>
+<li>git commit -m &quot;your message here&quot;</li>
+</ul></li>
+<li><p>Git simple structure</p>
+
+<div style='text-align: center;'>
+<img height='280' width='500'src='pictures/gits_area.jpg' />
+</div></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Github: Make and track edits</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol class = "build incremental">
+<li>Add a sentence into your LaTeX file 
+
+<ul>
+<li>Check your git status</li>
+<li>Check the differences </li>
+<li>Commit your changes </li>
+<li>Push into your repository </li>
+</ul></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Maintaining Multiple branches for a project</h2>
+  </hgroup>
+  <article data-timings="">
+    <div style='text-align: center;'>
+    <img height='300' width='400' src='pictures/branch.jpg' />
+</div>
+
+<ol class = "build incremental">
+<li>Create a new branch </li>
+<li>Add a formula into your document for your new purpose
+
+<ul>
+<li>P_{ij}=\frac{\text{exp}(\theta_j-b_i)}{1+\text{exp}(\theta_j-b_i)}.</li>
+</ul></li>
+<li>Go back to your master branch and delete the last sentence you added.</li>
+<li>Add a new sentence</li>
+<li>Merge two branches </li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Github for collaboration</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Let&#39;s help me to finish my dissertation :)</h3>
+
+<ol class = "build incremental">
+<li>Fork the repo (need to do this online)
+
+<ul>
+<li><a href="https://github.com/CenterForAssessment/NCME_Training_Session_2015/">NCME 2015 training website</a></li>
+<li>In the top-right corner of the page, click Fork.</li>
+<li>Chek your own github repo</li>
+</ul></li>
+<li>Clone your fork of repository 
+
+<ul>
+<li><a href="mailto:git@github.com">git@github.com</a>:ruhancirci/NCME_Training_Session_2015.git<br>
+(add &quot;<space> NCME2015_workshop&quot; if you want to extract into a specific folder)</li>
+<li>Simple forking structure <div style='text-align: center;'>
+<img height='190' width='450'src='pictures/forking.jpg' />
+</div></li>
+</ul></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Github for collaboration</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Make some edits into a chapter you select</h3>
+
+<ol class = "build incremental">
+<li>Check git status in your local repo</li>
+<li>Make edits into a file and save</li>
+<li>Commit your edits </li>
+<li>Push your edits into your remote repo</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Github for collaboration</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Syncing a fork (via git fetch)</h3>
+
+<ol class = "build incremental">
+<li>Go to your remote fork repository and make some in a file</li>
+<li>Check your git status</li>
+<li>Run the command git fetch</li>
+<li>Check the difference between remote and local master </li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Github for collaboration</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Pull request</h3>
+
+<ol class = "build incremental">
+<li>git remote add upstream <a href="https://github.com/CenterForAssessment/NCME_Training_Session_2015.git">NCME 2015 training https</a></li>
+<li>We can use git fetch upstream to get the updates from upstream repo</li>
+<li>Go to your own repo and click &quot;Pull requests&quot; </li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Thank You</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Contact: <a href="mailto:ruhan.circi@colorado.edu">ruhan.circi@colorado.edu</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='My inspration to use Github is Picasso'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='The steps that I will follow today'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Are we ready to start?'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='LaTeX'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Step-by-step LaTeX example'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Github: Put your document into your repository'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Github: Make and track edits'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Maintaining Multiple branches for a project'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Github for collaboration'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Github for collaboration'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Github for collaboration'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Github for collaboration'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Thank You'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title=''>
+         14
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
