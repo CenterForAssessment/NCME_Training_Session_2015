@@ -1,5 +1,5 @@
-2015 NCME Training Session Presentations
-=========================================
+2015 NCME Training Session GitHub Pages
+=======================================
 
 ## Leveraging Open Source Software and Tools for Statistics/Measurement Research
 
