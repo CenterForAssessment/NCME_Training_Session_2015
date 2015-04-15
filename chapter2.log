@@ -1,0 +1,25 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.15)  15 APR 2015 11:41
+entering extended mode
+**C:/Users/matthewraimondi/Desktop/NCME_Training_Session_2015/chapter2.tex
+(C:/Users/matthewraimondi/Desktop/NCME_Training_Session_2015/chapter2.tex
+LaTeX2e <2014/05/01>
+Babel <3.9l> and hyphenation patterns for 68 languages loaded.
+! Undefined control sequence.
+l.1 \chapter
+            {Mathematical Formulation}
+? 
+! Emergency stop.
+l.1 \chapter
+            {Mathematical Formulation}
+End of file on the terminal!
+
+ 
+Here is how much of TeX's memory you used:
+ 7 strings out of 493698
+ 272 string characters out of 3151662
+ 52149 words of memory out of 3000000
+ 3432 multiletter control sequences out of 15000+200000
+ 3640 words of font info for 14 fonts, out of 3000000 for 9000
+ 1025 hyphenation exceptions out of 8191
+ 5i,0n,1p,110b,8s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!
