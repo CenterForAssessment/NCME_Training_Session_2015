@@ -52,11 +52,14 @@ function's documentation for more details.
 
 \examples{
 # A simple output
+options(table_number=0)
+
 output <- matrix(1:4,
                  ncol=2,
                  dimnames = list(list("Row 1", "Row 2"),
                                  list("Column 1", "Column 2")))
-dualTable(output)
+
+dualTable(output, caption="Simple Test Table")
 
 # An advanced output
 output <-
@@ -80,10 +83,8 @@ dualTable(output, align="r",
                          "row"),
           rgroup = paste("Group", LETTERS[1:3]),
           n.rgroup = c(2,4,nrow(output) - 6),
-          cgroup = rbind(c("", "Column spanners", NA),
-                         c("", "Cgroup 1", "Cgroup 2&dagger;")),
-          n.cgroup = rbind(c(1,2,NA),
-                           c(2,2,2)),
+          cgroup = c("", "Cgroup 1", "Cgroup 2&dagger;"),
+          n.cgroup = c(2,2,2),
           caption="Basic table with both column spanners (groups) and row groups",
           tfoot="&dagger; A table footer commment",
           cspan.rgroup = 2,

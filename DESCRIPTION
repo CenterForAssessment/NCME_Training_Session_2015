@@ -1,8 +1,8 @@
 Package: SGPreports
 Type: Package
 Title: Reports rendered in multiple formats using a single function and R Markdown file.
-Version: 1.0
-Date: 2015-4-7
+Version: 1.3
+Date: 2015-4-14
 Authors@R: c(person(given=c("Adam", "R."), family="Van Iwaarden", email="avaniwaarden@gmail.com", role=c("aut", "cre")),
 		person(given=c("Damian", "W."), family="Betebenner", email="dbetebenner@nciea.org", role="aut")) 
 Maintainer: Adam Van Iwaarden <avaniwaarden@gmail.com>

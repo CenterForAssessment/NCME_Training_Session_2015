@@ -47,7 +47,7 @@ renderEPUB <- function(
       if (!file.exists(csl)) {
         stop("The csl file that you've specified can't be found in the file path provided.")
       } else csl <- paste("--csl", csl)
-    } else csl <- paste("--csl", system.file("rmarkdown", "templates", "multi_document", "resources", "apa.csl" , package = "SGPreports"))
+    } else csl <- paste("--csl", system.file("rmarkdown", "templates", "multi_document", "resources", "apa-5th-edition.csl" , package = "SGPreports"))
   }
   
   dir.create(file.path("EPUB", "markdown"), recursive=TRUE, showWarnings=FALSE)
@@ -166,7 +166,7 @@ renderEPUB <- function(
     } else {
       tmp_cover <- paste("--epub-cover-image=", cover_img, sep="")
     }
-  }
+  } else tmp_cover <- NULL
   
   ###
   ### system() call to pandoc
@@ -192,8 +192,8 @@ renderEPUB <- function(
     }
   }
 
-  message("\n\t Rendering EPUB with system call to pandoc:\n\n", 
-          my.pandoc, "-S -o", file.path("EPUB", gsub(".md", ".epub", input.md, ignore.case=TRUE)), file.path("EPUB", input.epub), tmp_cover, "--epub-stylesheet ", epub_css, epub_template, epub_number_sections, highlight, biblio, csl, pandoc_args, "\n")
+  message(paste("\n\t Rendering EPUB with system call to pandoc:\n\n", 
+          my.pandoc, "-S -o", file.path("EPUB", gsub(".md", ".epub", input.md, ignore.case=TRUE)), file.path("EPUB", input.epub), tmp_cover, "--epub-stylesheet ", epub_css, epub_template, epub_number_sections, highlight, biblio, csl, pandoc_args, "\n"))
 
   system(paste(my.pandoc, "-S -o", file.path("EPUB", gsub(".md", ".epub", input.md, ignore.case=TRUE)), file.path("EPUB", input.epub), tmp_cover, "--epub-stylesheet ", epub_css, epub_template, epub_number_sections, highlight, biblio, csl, pandoc_args))
 }  # End 'renderEPUB' function

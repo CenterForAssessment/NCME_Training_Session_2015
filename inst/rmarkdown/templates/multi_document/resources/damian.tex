@@ -178,7 +178,7 @@ $endif$
 \pagestyle{damian}
 
 \title{\textsf{\LARGE $title$ $if(subtitle)$ \\\medskip $subtitle$ $endif$}}
-\author{$for(author)$ $if(author.name)$ $author.name$ $if(author.affiliation)$ \\ $author.affiliation$ $endif$ $else$ $author$ $endif$ $sep$ \\ $endfor$}
+\author{$for(author)$ $if(author.name)$ $author.name$ $if(author.affiliation)$ \\ $author.affiliation$ \\ $endif$ $else$ $author$ $endif$ $sep$ \\ $endfor$}
 
 $if(date)$ \date{$date$} $else$ \date{\today} $endif$
 

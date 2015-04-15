@@ -9,19 +9,29 @@
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-$for(author-meta)$
+$if(author-meta)$
 <meta name="author" content="$author-meta$" />
-$endfor$
+$endif$
 
 $if(date-meta)$
 <meta name="date" content="$date-meta$" />
 $endif$
 
-<title>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$</title>
+<title>$if(meta_title)$$meta_title$$endif$</title>
 
 $for(header-includes)$
 $header-includes$
 $endfor$
+
+$if(javascript)$
+$for(javascript.css)$
+<link rel='stylesheet' href=$javascript.css$>
+$endfor$
+
+$for(javascript.js)$
+<script src=$javascript.js$></script>
+$endfor$
+$endif$
 
 $if(highlightjs)$
 <style type="text/css">code{white-space: pre;}</style>

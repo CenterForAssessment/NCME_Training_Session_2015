@@ -7,8 +7,9 @@ author:
 date: "`r Sys.Date()`"
 abstract: "DRAFT REPORT - DO NOT CITE! <br></br> This report is not ready for Primetime yet."
 bibliography: "default"
-output: SGPreports::multi_document
-
+output: 
+  SGPreports::multi_document:
+    pandoc_args: "--webtex"
 ---
 
 <!--SGPreport--> <!--DO NOT DELETE THE 'SGPreport' COMMENT (You CAN delete this one...)-->

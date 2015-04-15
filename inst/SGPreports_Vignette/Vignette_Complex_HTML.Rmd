@@ -1,0 +1,530 @@
+---
+title: "An Example *'SGPreport'* Document:"
+subtitle: Package Vignette and Overview
+author:
+  - name: First A. Author
+    affiliation: Some Organization, LLC
+    email: email@mail.com
+  - name: Second B. Author
+    affiliation: Some University
+    email: email@mail.edu
+date: April 2015
+abstract: Here is some text about the document - something like an abstract ... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lobortis lectus et tellus pharetra sodales. Duis eget sapien quis urna sagittis facilisis. Ut aliquam dui ut est euismod a mattis magna semper. Curabitur nec magna turpis. Etiam suscipit lectus vel lacus dignissim sollicitudin non at nisi. Proin ut nibh non magna vulputate laoreet in eget felis. Vivamus eget turpis nulla. Aliquam erat volutpat. Suspendisse potenti. Nullam viverra diam sit amet risus fermentum iaculis. Integer vitae purus eu urna ultrices sodales vel sed nisl. Cras lorem est, ultrices sed vulputate in, mattis ac justo.
+meta_title: SGPreport Document
+javascript:
+  js: ['js/d3.v2.min.js', 'js/jquery-1.8.2.min.js', 'js/nv.d3.js', 'js/fisheye.js']
+  css: ["css/rNVD3.css", "css/nv.d3.css"]
+output: 
+  SGPreports::multi_document:
+    bibliography: mybibliography.bib
+    pandoc_args: "--webtex"
+---
+
+<!--SGPreport-->
+
+<!-- 
+This document was written by ...
+	Original draft date:  
+-->
+
+
+```{r, echo=FALSE, include=FALSE}
+
+##  Load SGP and other packages here to avoid messages.
+  require(SGPreports)
+	require(data.table)
+	require(rCharts)
+	require(Gmisc)
+
+##  Set Table, Figure and Equation Counters  
+  options(table_counter=0)
+  options("fig_caption_no"=0)
+	options(fig_caption_no_sprintf = "**Figure %s:**   %s")
+	options("fig_caption_no_roman"=FALSE)
+	options("equation_counter" = 0)
+
+```
+
+# Introduction
+The `SGPreports` package [@SGPreports] provides functions for transforming a Rmarkdown text file (.Rmd) into a nice looking HTML document.  Beyond the base HTML document, additional stylized output formats are available including EPUB documents for e-book reader apps and devices, standard PDF documents.  Additionally a less stylized DOCX document version is available (intended to be a draft version document).  These document output formats are produced by using [`R`](http://www.r-project.org/) [@Rsoftware] and several `R` packages. 
+
+You are now looking at a sample version of this document, which includes plain text which are organized into main sections, subsections and sub-subsections.  This document provides instructions on how to construct document features such as lists and tables, and how to insert figures into the body of the document with pure [markdown](http://daringfireball.net/projects/markdown/syntax) text. Although markdown is designed to only provide basic features natively, it also supports varying levels of sophistication by allowing users to incorporate HTML to produce and include intricate tables and image layouts.  `LaTeX` can also be used to display mathematical equations.  Some examples included in this vignette use HTML code integrated directly into the markdown text file, but when possible I have provided simple markdown analogues (often embedded in the raw text file and located within HTML/markdown comments (which are demarcated by `<!-- ... -->`) .  As would be expected, a more detailed document requires more detailed code, and basic markdown quickly becomes insufficient ...
+
+##  YAML Front Matter and Using Lists
+This section provides an explanation of the YAML front matter required to produce this document.  What in the world is YAML front matter, you ask?  [Read this](http://en.wikipedia.org/wiki/YAML) for a general information and [this for help with YAML syntax](http://www.yaml.org/start.html).  YAML front matter is located at the very top of this file.  It is composed of several variables sandwiched between triple dashes (`---`). These variables define how your `SGPreport` document will appear and will require some customization for each document you produce.  
+
+Here is a list of common elements (displayed in an ordered list using markdown syntax):
+
+1. **`title`** - This is the printed title at the top of the document.  Notice the title entry in the source Rmarkdown document is in quotations because it contains a colon at the end.  Since this character is interpreted in YAML as something else, the title must be in quotes.  Take care using these characters as they my cause issues with other formats.  For example, this currently causes the EPUB rendering to choke.  Also notice that this title includes the markdown italics formatting syntax.
+2. **`subtitle`** - This is the (optional) subtitle which appears directly below the title in all document output formats, including EPUB cover pages.  No illegal characters here, so it is not enclosed in quotes.
+3. **`author`** - The document author(s).  This can be as simple as a single author (`author: First Author`), or include several authors and additional information about them (including their organizational affiliation and an email address).
+4. **`abstract`** - This is the (optional) blurb that appears underneath the document tittle in the HTML output, and on the second page of the EPUB and PDF documents.
+5. **`date`** - the date the report/document was published
+6. **`meta_title`** - The informational title that appears on the web-browser tab that the page is displayed in. 
+7. **`output`** - These are arguments and parameters supplied to the [`multi_document`](https://github.com/adamvi/SGPreports/blob/master/R/multi_document.R) function for rendering to HTML.  See the [`rmarkdown` documentation](http://rmarkdown.rstudio.com/html_document_format.html) for more details.
+8. **`javascript`** - These are JavaScript files that may be needed in the (HTML or EPUB only) documents.  This is a compound YAML entry that is comprised of two components:
+	  1. ***`js`*** - the Javascript files (or URLs) that are required for rendering images, such as the interactive plots included in this document that use the [D3.js](http://d3js.org/) library.
+    2. ***`css`*** - any additional CSS stylesheet files that are required for rendering images, such as the interactive plots included in this document that use the [`rCharts` package.](https://github.com/ramnathv/rCharts)
+
+-  ***NOTE.***  The `output` entry is only used if the document is rendered using the [`render` function](https://github.com/rstudio/rmarkdown/blob/master/R/render.R) from the `rmarkdown` package, or simply using the "knit" button in Rstudio.
+-  ***NOTE.***  Additional arguments can be supplied to the f
+-  ***NOTE.***  Did you notice that these ***Notes*** are a totally separate, unordered list than the numbered one above?  *GROOVY...*
+
+## Section Numbering
+In markdown, main sections are indicated by a single hash mark (`#`), usually followed by a title.  Subsections have two hash marks and so on.  There are (at least) 6 such "header levels" supported in markdown and HTML, but only the first three are used for section numbering by default (although this can be changed through functions' `number_section_depth` argument).  Only the first 2 section levels are currently included in the HTML documents table of contents, but more levels are supported in the PDF version.
+
+### Header Levels 5 and 6
+In some document formats (some academic journals for example), the captions for figures are placed underneath the figure in the document.  I find this annoying, so the header levels 5 and 6 have been set up to function as figure captions.  Examples of this can be found in the [section on images below.](#figures-and-charts)
+
+```R
+##### Level-5 Headers can be used to produce stylized figure captions,
+      tailored for big images that take up the entire width of the document`.
+```
+
+```R
+###### Level-6 Headers can be used to produce stylized figure captions,
+      tailored for small images that can be placed side by side`.
+```
+
+# Tables and Equations
+This document includes some pretty fine features, including the ability to render tables, math equations and figures.  Although basic tables can be produced using pure markdown, the nicest table examples are provided using raw HTML.  The degree of sophistication and difficulty increases from basic markdown tables to bona-fide HTML script included directly within the markdown text document^[HTML is considered to be valid markdown syntax.].  This kinda defeats the purpose of using markdown to begin with...  The next section provides simple examples of tables produced in 'pure' markdown.  None of these options seem great to me, so if you have a better (i.e. 'pure' markdown) solution please let me know by forking this repository and placing a pull request.
+
+
+## Basic Markdown Tables
+There are many simple examples of markdown tables.  A cheat-sheet for this and other good stuff can be [found on this page](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables).  Here are their examples:
+
+Colons can be used to align columns.
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
+The outer pipes (`|`) are optional, and you don't need to make the raw Markdown line up prettily. You can also use inline Markdown.
+
+Markdown | Less | Pretty
+--- | --- | ---
+*Still* | `renders` | **nicely**
+1 | 2 | 3
+
+### Complex Markdown Tables
+Here is an attempt I made at making a more complex markdown table using separators to mark two main sections of the table (**Aliquam Leo Lorem** and **Aliquam Leo Nibh**).  Multiple column spanning is not possible, so I try to place and align columns as best as possible.
+
+
+|----------------+-------------+------------+------------+-------------+------------+--------------|
+|***Table 1.***  |             |            |            |             |            |              |
+|                | **Aliquam** |  **Leo**   |  **Lorem** |             | **Aliquam**| **Leo Nibh** |
+|                |.............|............|............|             |            |              |
+|                |  *Nec Nibh* | *Ultricies*|*Cras Purus*| *Nec Nibh*  |*Ultricies* | *Cras Purus* |
+| *Pesque*       |   362.980   |    0.019   |    False   |   393.244   |   -0.107   |       True   |
+| *Pesque Nec*   |   360.795   |   -0.001   |    True    |   379.277   |    0.088   |      False   |
+
+
+## HTML Tables
+Although they require substantially more "markup" coding  HTML tables are much more flexible, beautiful and awesome than either LaTeX or Markdown tables.  But they made me want to cry when I first saw and trie to interpret the code required to make them.  I wish they were easier to produce and read, but they are not.  It may defeat the purpose of using markdown to begin with slightly, but at least the option exists.
+
+###  First HTML Example Table
+
+<div>
+<table class='gmisc_table' style='border-collapse: collapse;'>
+<a name='Table 2.'></a>
+<thead>
+<tr><td colspan='8' style='text-align: left;'>
+**Table 2:**  A Table Produced Using HTML Code Directly within the Document</td></tr>
+<tr>
+<th style='font-weight: 900; border-top: 4px double grey;'></th>
+<th align='center' colspan='3' style='font-weight: 900; border-bottom: 1px solid grey; border-top: 4px double grey;'>Aliquam Leo Lorem</th><th style='border-top: 4px double grey;'>&nbsp;</th>
+<th align='center' colspan='3' style='font-weight: 900; border-bottom: 1px solid grey; border-top: 4px double grey;'>Aliquam Leo Nibh</th>
+</tr>
+<tr>
+<th style=';'>&nbsp;</th>
+<th align='center' style='border-bottom: 1px solid grey;'>Nec Nibh</th>
+<th align='center' style='border-bottom: 1px solid grey;'>Ultricies</th>
+<th align='center' style='border-bottom: 1px solid grey;'>Cras Purus</th>
+<th style='border-bottom: 1px solid grey;'>&nbsp;</th>
+<th align='center' style='border-bottom: 1px solid grey;'>Nec Nibh</th>
+<th align='center' style='border-bottom: 1px solid grey;'>Ultricies</th>
+<th align='center' style='border-bottom: 1px solid grey;'>Cras Purus</th>
+</tr>
+</thead><tbody>
+<tr><td align='left' style='border-bottom: 1px solid grey; font-weight: 900;'>Analysis</td></tr>
+<tr>
+<td align='right' style=';'>Pellentesque</td>
+<td align='right' style=';'>362.98</td>
+<td align='right' style=';'> 0.02</td>
+<td align='right' style=';'> 8.00</td>
+<th style=';'>&nbsp;</th>
+<td align='right' style=';'>287.78</td>
+<td align='right' style=';'>-0.428</td>
+<td align='right' style=';'> 5.65</td>
+</tr>
+<tr>
+<td align='right' style='border-bottom: 1px solid grey;'>&nbsp;&nbsp;Pellentesque Nec</td>
+<td align='right' style='border-bottom: 1px solid grey;'>360.80</td>
+<td align='right' style='border-bottom: 1px solid grey;'>-0.00</td>
+<td align='right' style='border-bottom: 1px solid grey;'> 7.51</td>
+<th style='border-bottom: 1px solid grey;'>&nbsp;</th>
+<td align='right' style='border-bottom: 1px solid grey;'>379.28</td>
+<td align='right' style='border-bottom: 1px solid grey;'>-0.57</td>
+<td align='right' style='border-bottom: 1px solid grey;'> 6.23</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!--  Markdown Version of Table 2
+|----------------------+-------------+-------------+-------------+-------------+---------------+-------------|
+|**Table 2.**          |             |             |             |             |            | Varius Nec Nibh|
+|                      |             | Aliquam Leo Lorem |       |             |           | Vel Ultricies Eu|
+|:---------------------|------------:|------------:|------------:|------------:|--------------:|------------:|
+|                      |...............|............................|...............|      |       |         |
+|                      | Nec Nibh   |  Ultricies   |  Cras Purus |  Nec Nibh   |   Ultricies   |  Cras Purus |
+| Pellentesque         |   362.980   |    0.019    |     8.004   |   248.836   |     -0.428    |     5.652   |
+| Pellentesque Nec     |   360.795   |   -0.001    |     7.512   |   287.078   |     -0.057    |     6.225   |
+|----------------------+-------------+-------------+-------------+-------------+---------------+-------------|
+-->
+
+### Second HTML Example Table
+
+HTML Provides the most flexible table presentation I've found.  Here is another example:
+
+<div>
+<table class='gmisc_table' style='border-collapse: collapse;'>
+<a name='Table 3.'></a>
+<thead>
+<tr><td colspan='8' style='text-align: left;'>
+**Table 3:**  A Table Produced Using HTML Code Directly within the Document</td></tr>
+<tr>
+<th style='font-weight: 900; border-top: 4px double grey;'></th>
+<th align='center' colspan='3' style='font-weight: 900; border-bottom: 1px solid grey; border-top: 4px double grey;'>Mean Amet egestas</th><th style='border-top: 4px double grey;'>&nbsp;</th>
+<th align='center' colspan='3' style='font-weight: 900; border-bottom: 1px solid grey; border-top: 4px double grey;'>Median Amet egestas</th>
+</tr>
+<tr>
+<th style=';'>&nbsp;</th>
+<th align='center' style='border-bottom: 1px solid grey;'>Nec Nibh</th>
+<th align='center' style='border-bottom: 1px solid grey;'>Ultricies</th>
+<th align='center' style='border-bottom: 1px solid grey;'>Cras Purus</th>
+<th style='border-bottom: 1px solid grey;'>&nbsp;</th>
+<th align='center' style='border-bottom: 1px solid grey;'>Nec Nibh</th>
+<th align='center' style='border-bottom: 1px solid grey;'>Ultricies</th>
+<th align='center' style='border-bottom: 1px solid grey;'>Cras Purus</th>
+</tr>
+</thead><tbody>
+<tr><td align='left' style='border-bottom: 1px solid grey; font-weight: 900;'>Pellentesque</td></tr>
+<tr>
+<td align='right' style=';'>Without Dictumst </td>
+<td align='right' style=';'>5.57</td>
+<td align='right' style=';'> -0.20</td>
+<td align='right' style=';'> 2.36</td>
+<th style=';'>&nbsp;</th>
+<td align='right' style=';'>26.37</td>
+<td align='right' style=';'>-0.10</td>
+<td align='right' style=';'> 5.14</td>
+</tr>
+<tr>
+<td align='right' style=';'>With Dictumst </td>
+<td align='right' style=';'>4.74</td>
+<td align='right' style=';'>-0.08</td>
+<td align='right' style=';'> 2.18</td>
+<th style=';'>&nbsp;</th>
+<td align='right' style=';'>28.36</td>
+<td align='right' style=';'> 0.03</td>
+<td align='right' style=';'> 5.33</td>
+</tr>
+<tr><td align='left' style='border-bottom: 1px solid grey; font-weight: 900;'>Pellentesque Nec</td></tr>
+<tr>
+<td align='right' style=';'>Without Dictumst </td>
+<td align='right' style=';'>5.95</td>
+<td align='right' style=';'>-0.26</td>
+<td align='right' style=';'> 2.43</td>
+<th style=';'>&nbsp;</th>
+<td align='right' style=';'>27.10</td>
+<td align='right' style=';'>-0.27</td>
+<td align='right' style=';'> 5.20</td>
+</tr>
+<tr>
+<td align='right' style=';'>With Dictumst </td> 
+<td align='right' style=';'>4.52</td>
+<td align='right' style=';'> 0.09</td>
+<td align='right' style=';'> 2.13</td>
+<th style=';'>&nbsp;</th>
+<td align='right' style=';'>25.68</td>
+<td align='right' style=';'> 0.08</td>
+<td align='right' style=';'> 5.06</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!--  Markdown Version of Table 3
+|----------------------+-------------+-------------+-------------+-------------+-------------+-------------|
+|**Table 3.**          |             |             |             |             |             |             |
+|                      |       | Mean Amet egestas |             |           |       | Median Amet egestas |
+|:---------------------|------------:|------------:|:------------|------------:|------------:|------------:|
+|                      |...............|.......................|...............|       |     |             |
+|                      | Nec Nibh    |  Ultricies  |  Cras Purus | Nec Nibh    |  Ultricies  |  Cras Purus |
+|                      |             |             |             |             |             |             |
+| Pellentesque
+| Without Dictumst     |    5.574    |    -0.196   |    2.360    |   26.366    |   -0.104    |    5.137    |
+| With Dictumst        |    4.741    |    -0.075   |    2.177    |   28.364    |    0.034    |    5.329    |
+|===
+|                      |             |             |             |             |             |             |
+| Pellentesque Nec
+| Without Dictumst     |    5.948    |    -0.263    |   2.433    |   27.101    |   -0.266    |    5.199    |
+| With Dictumst        |    4.519    |     0.094    |   2.125    |   25.679    |    0.084    |    5.060    |
+|----------------------+-------------+-------------+-------------+-------------+---------------+-----------|
+-->
+
+
+Fortunately in there are packages in `R` that can assist in constructing these tables.  The [`htmlTable` package](http://cran.r-project.org/web/packages/htmlTable/index.html) allows for the construction of complex tables from `matrix` and `data.frame` class objects.  The `SGPreports` package has a similar function, `dualTable`, which actually produces both `htmlTable` and `latex` (from the `Hmisc` package) table versions. Here is an example:
+
+```{r, results='asis', echo=TRUE, dualTable_example}
+# First set the table_counter to the correct number of tables displayed so far:
+
+  options(table_counter=3)
+
+# An advanced output
+output <-
+  matrix(ncol=6, nrow=8)
+
+for (nr in 1:nrow(output)){
+  for (nc in 1:ncol(output)){
+    output[nr, nc] <-
+      paste0(nr, ":", nc)
+  }
+}
+
+cat(dualTable(output, align="r",
+          header =  paste(c("1st", "2nd",
+                            "3rd", "4th",
+                            "5th", "6th"),
+                          "hdr"),
+          rnames = paste(c("1st", "2nd",
+                           "3rd",
+                           paste0(4:8, "th")),
+                         "row"),
+          rgroup = paste("Group", LETTERS[1:3]),
+          n.rgroup = c(2,4,nrow(output) - 6),
+          cgroup = c("", "Cgroup 1", "Cgroup 2&dagger;"),
+          n.cgroup = c(2,2,2),
+          caption="Basic table with both column spanners (groups) and row groups",
+          tfoot="&dagger; A table footer commment",
+          cspan.rgroup = 2,
+          col.columns = c(rep("none", 2),
+                          rep("#F5FBFF", 4)),
+          col.rgroup = c("none", "#F7F7F7"),
+          css.cell = "padding-left: .5em; padding-right: .2em;"))
+
+```
+
+
+## Mathematical Equations
+Markdown allows for LaTeX style math formulas.  One of the more popular ways of rendering equations into HTML documents is to use the [`MathJax`](https://www.mathjax.org/) JavaScript library.  Unfortunately this is a very large code package and can not be included in standalone HTML documents or in EPUB documents.  However, the [`webtex`](https://github.com/KTHse/webtex) conversion option in `pandoc`, which converts the equations into small .png images that are embedded within the document, can be used in such standalone documents.
+
+Both inline and display equations are available.  Display equations can include an equation counter as well.  Equations are written in LaTeX and interpreted into HTML by one of several options through pandoc ([see demo 16 and 17](http://pandoc.org/demos.html)). Although `MathJax` is a common option in many applications, `webtex` has shown to be a reliable workhorse for standalone documents including the HTML and EPUB formats.
+
+In order to include an inline LaTeX equation you enclose the code in `$` delimiters.  For example, this code `$\frac{1}{n} \sum_{i=1}^{n} x_{i}$` for the arithmetic mean produces this $\frac{1}{n} \sum _{i=1}^{n} x _{i}$ inline equation.  More complex, or important, equations may need their own line, or "display".  Displayed equations can also be numbered according to the order of presentation and referenced later in the document by appending the string  `\hspace{2pt} \text{(INSERT NUMBER or EQUATION NUMBER CODE)} \hspace{55pt}`.  For example:
+
+$$ \hspace{2pt} \text{(`r eqnNumNext()`)} \hspace{55pt} MSE = \frac{1}{n} \sum_ {i=1}^n (\widehat{\theta}_ {i} - \theta_i)^2$$
+
+$$ \hspace{2pt} \text{(`r eqnNumNext()`)} \hspace{55pt} MSE(\hat{\theta}) = \mathbb{E}[(\hat{\theta} - \theta)^2]$$
+
+
+# Figures and Charts
+Here are some examples of how to include figures and charts.  These examples range from simple static images stored in a local directory or sourced from the web to interactive [D3 charts](http://d3js.org/) produced using the [rCharts](http://ramnathv.github.io/rCharts/) package for the [R statistical programming language](http://www.r-project.org/).
+
+## Static Figures
+Figures located in the `img` subdirectory of the document folder can be included directly into the document.  The first figure is included without the need to resize the .png image, and so the markdown code is fairly simple:
+`![](img/Fig_1.png)`
+
+##### `r figCapNo("From a File in the Local Directory.")`
+![](img/Fig_1.png)
+
+
+## Images from the Web
+Images can also be sourced from the web by including the URL in the code.  Further image formatting and layout features are also available through the use of direct HTML, as this example also shows in the markdown source file.
+
+```html
+<div class='content-node image'>
+<div class='image-content'>    
+<img src="http://octodex.github.com/images/baracktocat.jpg" style="width: 350px;"/>
+</div>
+```
+
+##### `r figCapNo("The second figure of this document has been sourced from the interwebs.")`
+
+<div class='content-node image'>
+<div class='image-content'>    
+<img src="http://octodex.github.com/images/baracktocat.jpg" style="width: 350px;"/>
+</div>
+</div>
+
+## Interactive D3 Charts
+Static charts and plots can be saved as .png, .jpg or other raw files and included in a similar fashion to the two methods shown above^[All images ***must*** be place in a subdirectory named "`img`".].  Here I show how more interesting, interactive figures can be included.  Specifically, the following 3 charts have been produced using the [rCharts](http://ramnathv.github.io/rCharts/) package available for the open-source [R statistical programming language](http://www.r-project.org/)[@Rsoftware].  This R package leverages the [D3 JavaScript library](http://d3js.org/) on the backend. D3 stands for 'Data-Driven Documents'.
+
+### D3 Bar chart example using a .js script file
+Here is the first example of an interactive chart.
+
+##### `r figCapNo("Example interactive bar chart created using the rChart package in R.  Click on the circles at the top of the chart to customize the display.")`
+
+<div class='content-node image'>
+<div class='image-content'>    
+<div id="chart" class="rChart nvd3Plot nvd3"></div>
+<script src="img/bar_chart_example.js" type="text/javascript" charset="utf-8"></script>
+</div>
+</div>
+
+### D3 Scatterplot example using inline HTML 'script'
+The 2nd chart was created using this code:
+
+```R
+p1 <- nPlot(mpg ~ wt, group = 'cyl', data = mtcars, type = 'scatterChart')
+p1$xAxis(axisLabel = 'Weight')
+p1
+```
+
+##### `r figCapNo("Example interactive scatter chart created using the rChart package in R.  Click on the circles at the top of the chart to customize the display.")`
+
+<div class='content-node image'>
+<div class='image-content'>    
+<div id='chart64af7f973c9b' class='rChart nvd3Plot nvd3'></div>
+
+<script type='text/javascript'>
+$(document).ready(function(){
+drawchart64af7f973c9b()
+});
+function drawchart64af7f973c9b(){ 
+var opts = {
+"dom": "chart64af7f973c9b", 
+"width": 700, 
+"height": 350, 
+"x": "wt", 
+"y": "mpg", 
+"group": "cyl", 
+"type": "scatterChart", 
+"id": "chart64af7f973c9b"}, 
+data = [
+{"mpg": 21.0, "cyl": 6, "disp": 160, "hp": 110, "drat": 3.9, "wt": 2.62, "qsec": 16.46, "vs": 0, "am": 1, "gear": 4, "carb": 4},
+{"mpg": 21.0, "cyl": 6, "disp": 160, "hp": 110, "drat": 3.9, "wt": 2.875, "qsec": 17.02, "vs": 0, "am": 1, "gear": 4, "carb": 4},
+{"mpg": 22.8, "cyl": 4, "disp": 108, "hp": 93, "drat": 3.85, "wt": 2.32, "qsec": 18.61, "vs": 1, "am": 1, "gear": 4, "carb": 1},
+{"mpg": 21.4, "cyl": 6, "disp": 258, "hp": 110, "drat": 3.08, "wt": 3.215, "qsec": 19.44, "vs": 1, "am": 0, "gear": 3, "carb": 1},
+{"mpg": 18.7, "cyl": 8, "disp": 360, "hp": 175, "drat": 3.15, "wt": 3.44, "qsec": 17.02, "vs": 0, "am": 0, "gear": 3, "carb": 2},
+{"mpg": 18.1, "cyl": 6, "disp": 225, "hp": 105, "drat": 2.76, "wt": 3.46, "qsec": 20.22, "vs": 1, "am": 0, "gear": 3, "carb": 1},
+{"mpg": 14.3, "cyl": 8, "disp": 360, "hp": 245, "drat": 3.21, "wt": 3.57, "qsec": 15.84, "vs": 0, "am": 0, "gear": 3, "carb": 4},
+{"mpg": 24.4, "cyl": 4, "disp": 146.7, "hp": 62, "drat": 3.69, "wt": 3.19, "qsec": 20, "vs": 1, "am": 0, "gear": 4, "carb": 2},
+{"mpg": 22.8, "cyl": 4, "disp": 140.8, "hp": 95, "drat": 3.92, "wt": 3.15, "qsec": 22.9, "vs": 1, "am": 0, "gear": 4, "carb": 2},
+{"mpg": 19.2, "cyl": 6, "disp": 167.6, "hp": 123, "drat": 3.92, "wt": 3.44, "qsec": 18.3, "vs": 1, "am": 0, "gear": 4, "carb": 4},
+{"mpg": 17.8, "cyl": 6, "disp": 167.6, "hp": 123, "drat": 3.92, "wt": 3.44, "qsec": 18.9, "vs": 1, "am": 0, "gear": 4, "carb": 4},
+{"mpg": 16.4, "cyl": 8, "disp": 275.8, "hp": 180, "drat": 3.07, "wt": 4.07, "qsec": 17.4, "vs": 0, "am": 0, "gear": 3, "carb": 3},
+{"mpg": 17.3, "cyl": 8, "disp": 275.8, "hp": 180, "drat": 3.07, "wt": 3.73, "qsec": 17.6, "vs": 0, "am": 0, "gear": 3, "carb": 3},
+{"mpg": 15.2, "cyl": 8, "disp": 275.8, "hp": 180, "drat": 3.07, "wt": 3.78, "qsec": 18, "vs": 0, "am": 0, "gear": 3, "carb": 3},
+{"mpg": 10.4, "cyl": 8, "disp": 472, "hp": 205, "drat": 2.93, "wt": 5.25, "qsec": 17.98, "vs": 0, "am": 0, "gear": 3, "carb": 4},
+{"mpg": 10.4, "cyl": 8, "disp": 460, "hp": 215, "drat": 3, "wt": 5.424, "qsec": 17.82, "vs": 0, "am": 0, "gear": 3, "carb": 4},
+{"mpg": 14.7, "cyl": 8, "disp": 440, "hp": 230, "drat": 3.23, "wt": 5.345, "qsec": 17.42, "vs": 0, "am": 0, "gear": 3, "carb": 4},
+{"mpg": 32.4, "cyl": 4, "disp": 78.7, "hp": 66, "drat": 4.08, "wt": 2.2, "qsec": 19.47, "vs": 1, "am": 1, "gear": 4, "carb": 1},
+{"mpg": 30.4, "cyl": 4, "disp": 75.7, "hp": 52, "drat": 4.93, "wt": 1.615, "qsec": 18.52, "vs": 1, "am": 1, "gear": 4, "carb": 2},
+{"mpg": 33.9, "cyl": 4, "disp": 71.1, "hp": 65, "drat": 4.22, "wt": 1.835, "qsec": 19.9, "vs": 1, "am": 1, "gear": 4, "carb": 1},
+{"mpg": 21.5, "cyl": 4, "disp": 120.1, "hp": 97, "drat": 3.7, "wt": 2.465, "qsec": 20.01, "vs": 1, "am": 0, "gear": 3, "carb": 1},
+{"mpg": 15.5, "cyl": 8, "disp": 318, "hp": 150, "drat": 2.76, "wt": 3.52, "qsec": 16.87, "vs": 0, "am": 0, "gear": 3, "carb": 2},
+{"mpg": 15.2, "cyl": 8, "disp": 304, "hp": 150, "drat": 3.15, "wt": 3.435, "qsec": 17.3, "vs": 0, "am": 0, "gear": 3, "carb": 2},
+{"mpg": 13.3, "cyl": 8, "disp": 350, "hp": 245, "drat": 3.73, "wt": 3.84, "qsec": 15.41, "vs": 0, "am": 0, "gear": 3, "carb": 4},
+{"mpg": 19.2, "cyl": 8, "disp": 400, "hp": 175, "drat": 3.08, "wt": 3.845, "qsec": 17.05, "vs": 0, "am": 0, "gear": 3, "carb": 2},
+{"mpg": 27.3, "cyl": 4, "disp": 79, "hp": 66, "drat": 4.08, "wt": 1.935, "qsec": 18.9, "vs": 1, "am": 1, "gear": 4, "carb": 1},
+{"mpg": 26.0, "cyl": 4, "disp": 120.3, "hp": 91, "drat": 4.43, "wt": 2.14, "qsec": 16.7, "vs": 0, "am": 1, "gear": 5, "carb": 2},
+{"mpg": 30.4, "cyl": 4, "disp": 95.1, "hp": 113, "drat": 3.77, "wt": 1.513, "qsec": 16.9, "vs": 1, "am": 1, "gear": 5, "carb": 2},
+{"mpg": 15.8, "cyl": 8, "disp": 351, "hp": 264, "drat": 4.22, "wt": 3.17, "qsec": 14.5, "vs": 0, "am": 1, "gear": 5, "carb": 4},
+{"mpg": 19.7, "cyl": 6, "disp": 145, "hp": 175, "drat": 3.62, "wt": 2.77, "qsec": 15.5, "vs": 0, "am": 1, "gear": 5, "carb": 6},
+{"mpg": 15.0, "cyl": 8, "disp": 301, "hp": 335, "drat": 3.54, "wt": 3.57, "qsec": 14.6, "vs": 0, "am": 1, "gear": 5, "carb": 8},
+{"mpg": 21.4, "cyl": 4, "disp": 121, "hp": 109, "drat": 4.11, "wt": 2.78, "qsec": 18.6, "vs": 1, "am": 1, "gear": 4, "carb": 2}]
+
+var data = d3.nest()
+.key(function(d){
+return opts.group === undefined ? 'main' : d[opts.group]
+})
+.entries(data)
+
+nv.addGraph(function() {
+var chart = nv.models[opts.type]()
+.x(function(d) { return d[opts.x] })
+.y(function(d) { return d[opts.y] })
+.width(opts.width)
+.height(opts.height)
+
+chart.xAxis
+.axisLabel("Weight")
+
+d3.select("#" + opts.id)
+.append('svg')
+.datum(data)
+.transition().duration(500)
+.call(chart);
+
+nv.utils.windowResize(chart.update);
+return chart;
+});
+};
+</script>
+</div>
+</div>
+
+D3 plots can also be saved as a stand alone HTML file and linked to from the main document, as [shown here](scatter_plot.html).  These .html files must be saved in the base directory (rather than the img/ directory for example) so that they have access to assets such as the .js and .css scripts.
+
+### A third D3 rChart example, because I just can't get enough ...
+
+This 3rd chart was created using these commands:
+
+```R
+dat <- data.frame(t = rep(0:23,each=4),
+                  var = rep(LETTERS[1:4],4),
+                  val = round(runif(4*24,0,50)))
+				  
+p8 <- nPlot(val ~ t, group = 'var', data = dat, 
+    type = 'stackedAreaChart', id = 'chart')
+p8
+```
+
+##### `r figCapNo("Example interactive Stacked Area Chart created using the rChart package in R.  Click on the circles at the top of the chart to customize the display.")`
+
+<div class='content-node image'>
+<div class='image-content'>    
+<div id="chart64af4f227d3" class="rChart nvd3Plot nvd3"></div>
+<script src="img/Stacked_Area_Chart_example.js" type="text/javascript" charset="utf-8"></script>
+</div>
+</div>
+
+
+# Notes and Citations
+
+Rmarkdown and `pandoc` include extensions to basic markdown that allow for footnotes to be included in the text of the document.  Footnotes will appear in different locations depending on the output fomat type.  They will be all together in one section at the very end of the HTML and DOCX document formats, at the end of each "chapter" (level 1 headings) of the EPUB, and at the bottom of the page it appears on in the PDFs.
+
+Bibliographic entries will be made at the end of the document, and if you have an empty level-1 header, such as the `# References` line at the end of this document, they will appear as an *unnumbered* section in the document.
+
+## Footnote syntax
+Footnotes are supported[^1], and can use different syntax depending on the use case.  Here are the [examples from the `rmarkdown` documentation](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html#footnotes):
+
+Here is a footnote reference,[^2] and another.[^longnote]
+
+[^1]: Thank you `rmarkdown` and `pandoc`!
+[^2]: Here is the footnote. Notice that this is not actually the second footnote, even though it is numbered as "2" in the Rmarkdown source file.
+
+[^longnote]: Here's one with multiple blocks.
+
+    Subsequent paragraphs are indented to show that they
+belong to the previous footnote.
+
+        { some.code }
+
+    The whole paragraph can be indented, or just the first
+    line.  In this way, multi-paragraph footnotes work like
+    multi-paragraph list items.
+
+This paragraph won't be part of the note, because it isn't indented.  Finally, inline footnotes are available and convenient. Here is an inline note.^[Inlines notes are easier to write, since
+you don't have to pick an identifier and move down to type the note.]
+
+## Adding a bibliography
+Documentation about how to use citations and include a bibliography in a document can be found online.  [See this link for an excellent resource](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html).  There have been a few references used already to cite the `SGPreports` package [@SGPreports].  A default bibliography is included in the package that includes numerous citations that the authors use.  In this document we use our own bibliography ("`mybibliography.bib`" in the main SGPreports_Vignette directory).  This bibliography includes this package [@SGPreports] and `R` [-@Rsoftware] entries, as well as a fake entry for the venerable Doe and Roe [-@DoeRoe:2015].
+
+Various bibliographic styles are available, although the default is APA 5<sup>th</sup> edition.  Other styles can be found online ([here is one site](https://github.com/citation-style-language/styles)) and implemented by specifying the `csl` argument in either the `multi_document` or `renderMultiDocument` functions.
+
+# References

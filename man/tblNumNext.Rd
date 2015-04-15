@@ -7,11 +7,11 @@ tblNumNext())
 \arguments{
 }
 \description{
-The function relies on \code{options("table_counter")} in
+The function relies on \code{options("table_number")} in
 order to keep track of the last number.
 }
 \examples{
-org_opts <- options(table_counter=1)
+org_opts <- options(table_number=1)
 tblNumNext()
 options(org_opts)
 }

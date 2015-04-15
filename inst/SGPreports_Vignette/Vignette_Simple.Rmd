@@ -1,0 +1,188 @@
+---
+title: "Report Title"
+subtitle: "A Subtitle to the Report"
+author:
+  - name: First A. Author
+    affiliation: Some Organization, LLC
+    email: email@mail.com
+  - name: Second B. Author
+    affiliation: Some University
+    email: email@mail.edu
+date: April 2015
+abstract: "Here is some text about the document - something like an abstract ... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lobortis lectus et tellus pharetra sodales. Duis eget sapien quis urna sagittis facilisis. Ut aliquam dui ut est euismod a mattis magna semper. Curabitur nec magna turpis. Etiam suscipit lectus vel lacus dignissim sollicitudin non at nisi. Proin ut nibh non magna vulputate laoreet in eget felis. Vivamus eget turpis nulla. Aliquam erat volutpat. Suspendisse potenti. Nullam viverra diam sit amet risus fermentum iaculis. Integer vitae purus eu urna ultrices sodales vel sed nisl. Cras lorem est, ultrices sed vulputate in, mattis ac justo."
+---
+
+<!--SGPreport--> <!--DO NOT DELETE THE 'SGPreport' COMMENT (You CAN delete this one...)-->
+
+#  Introduction
+This "simple" version of the two vignette documents is meant to show how a "pure" markdown text file is rendered in any of the available formats.  The document includes only a handful of complex elements, including: 
+
+1. A table created from the `dualTable` function from the `SGPreports` package.
+2. An example of inline and display equations.
+3. The insertion of images and image captions using the packages header level shortcuts.
+4. The use of bibliography the files
+  - The .bib file includes LaTeX style bibliographic entries
+  - The CSL file is a bibliography "style" file (the default for this package is "APA" style, the default for `pandoc` if `csl=NULL` is "Chicago").
+5. This list serves as an example of lists.  This is an ordered list element.
+  - This is an unordered list element
+
+```{r, echo=FALSE, include=FALSE}
+##  Set Table, Figure and Equation Counters  
+  options(table_counter=0)
+  options("fig_caption_no"=0)
+	options(fig_caption_no_sprintf = "**Figure %s:**   %s")
+	options("fig_caption_no_roman"=FALSE)
+	options("equation_counter" = 0)
+```
+
+This document is set up to use the package defaults.  This includes:
+
+- Section Numbering with a section depth of 3
+- Table of Contents
+  -  Two section levels in HTML and EPUB
+  -  Three levels in PDF format bookmarks
+  -  There is no table of contents included in the DOCX draft document
+- The use custom `pandoc` templates and CSS stylesheet
+  -  HTML uses a custom `pandoc` template and CSS stylesheet for HTML.
+  -  PDF format uses a custom `pandoc` template to format and style the output.
+  -  EPUB uses the default `pandoc` template along with a custom CSS style sheet.
+  -  DOCX uses the default CSS from the `Grmd` package.
+- FYI, this is an example of a nested, unordered list.
+
+Additionally, this simple vignette supplies the additional argument "--webtex" to pandoc for processing LaTeX style equations in HTML.  Although there are other (more popular) options, such as `MathJax`, this option works with both HTML and EPUB (and in some use cases DOCX) formats.  PDF output format simply uses LaTeX to format and process equations.
+
+For more interesting and sophisticated uses of this package's features (particularly with HTML output), see the results of the `Vignette_Complex_HTML.Rmd` file and its output.  From this point forward only the section, subsection and sub-subsection headers are in English.  All other text is Lorem Epsum gobbledy gook.
+
+##  First Subsection
+Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. 
+
+### First Sub-Subsection
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
+
+
+# Section Numbering
+In markdown, main sections are indicated by a single hash mark (#), usually followed by a title.  Subsections have two hash marks and so on.  There are (at least) 6 such "header levels" supported in markdown and HTML, but only the first three are used for section numbering by default (although this can be changed through functions' `number_section_depth` argument).  Only the first 2 section levels are currently included in the HTML documents table of contents, but more levels are supported in the PDF version^[PDF table of contents are not displayed in the document, but are included as bookmarks that can be used to navigate the document].
+
+## Header Levels 5 and 6
+In some document formats (some academic journals for example), the captions for figures are placed underneath the figure in the document.  I find this annoying, so the header levels 5 and 6 have been set up to function as figure captions.  Examples of this can be found in the [section on images below.](#figures-and-images)
+
+Level-5 Headers can be used to produce stylized figure captions, tailored for big images that take up the entire width of the document.  Level-6 Headers can be used to produce stylized figure captions, tailored for small images that can be placed side by side.
+
+# Tables
+
+## Markdown tables
+There are many simple examples of markdown tables.  A cheat-sheet for this and other good stuff can be [found on this page](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables).  Here are their examples:
+
+Colons can be used to align columns.
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
+### Complex Markdown Tables
+Here is an attempt I made at making a more complex markdown table using separators to mark two main sections of the table (**Aliquam Leo Lorem** and **Aliquam Leo Nibh**).  Multiple column spanning is not possible, so I try to place and align columns as best as possible.
+
+
+|----------------+-------------+------------+------------+-------------+------------+--------------|
+| Table 1.       |             |            |            |             |            |              |
+|                | **Aliquam** |  **Leo**   |  **Lorem** |             | **Aliquam**| **Leo Nibh** |
+|                |.............|............|............|             |            |              |
+|                |  *Nec Nibh* | *Ultricies*|*Cras Purus*| *Nec Nibh*  |*Ultricies* | *Cras Purus* |
+| *Pesque*       |   362.980   |    0.019   |    False   |   393.244   |   -0.107   |       True   |
+| *Pesque Nec*   |   360.795   |   -0.001   |    True    |   379.277   |    0.088   |      False   |
+
+
+## HTML and LaTeX tables
+Fortunately in there are packages in `R` that can assist in constructing these tables.  The [`htmlTable` package](http://cran.r-project.org/web/packages/htmlTable/index.html) allows for the construction of complex tables from `matrix` and `data.frame` class objects.  The `SGPreports` package has a similar function, `dualTable`, which actually produces both `htmlTable` and `latex` (from the `Hmisc` package) table versions. Here is an example of how to use the function - it is inserted in a `knitr` code chunk, which is turned from `R` code to HTML and LaTeX output when either the `render(...)` or `renderMultiDocument` functions are used to process this source file:
+
+```{r, results='asis', echo=TRUE, dualTable_example}
+
+options(table_counter=1)
+
+output <- matrix(1:4,
+                 ncol=2,
+                 dimnames = list(list("Row 1", "Row 2"),
+                                 list("Column 1", "Column 2")))
+
+dualTable(output, caption="Simple Test Table")
+
+
+```
+
+### More space filling text
+
+Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. 
+
+
+# Mathematical Equations
+Markdown allows for LaTeX style math formulas.  One of the more popular ways of rendering equations into HTML documents is to use the [`MathJax`](https://www.mathjax.org/) JavaScript library.  Unfortunately this is a very large code package and can not be included in standalone HTML documents or in EPUB documents.  However, the [`webtex`](https://github.com/KTHse/webtex) conversion option in `pandoc`, which converts the equations into small .png images that are embedded within the document, can be used in such standalone documents.
+
+Both inline and display equations are available.  Display equations can include an equation counter as well.  Equations are written in LaTeX and interpreted into HTML by one of several options through pandoc ([see demo 16 and 17](http://pandoc.org/demos.html)). Although `MathJax` is a common option in many applications, `webtex` has shown to be a reliable workhorse for standalone documents including the HTML and EPUB formats.
+
+In order to include an inline LaTeX equation you enclose the code in dollar sign delimiters.  For example, this code `$\frac{1}{n} \sum_{i=1}^{n} x_{i}$` for the arithmetic mean produces this $\frac{1}{n} \sum _{i=1}^{n} x _{i}$ inline equation.  More complex, or important, equations may need their own line, or "display".  Displayed equations can also be numbered according to the order of presentation and referenced later in the document.  For example:
+
+$$\hspace{2pt} \text{(`r eqnNumNext()`)} \hspace{55pt} MSE = \frac{1}{n} \sum_ {i=1}^n (\widehat{\theta}_ {i} - \theta_i)^2$$
+
+$$\hspace{2pt} \text{(`r eqnNumNext()`)} \hspace{55pt} MSE(\hat{\theta}) = \mathbb{E}[(\hat{\theta} - \theta)^2]$$
+
+Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. In vel mi sit amet augue congue elementum. Morbi in ipsum sit amet pede facilisis laoreet. 
+
+
+# Figures and Images
+Here are some examples of how to include figures.  These examples are limited to simple static images stored in a local directory and an image sourced from the web.  More complex uses, including interactive [D3 charts](http://d3js.org/) produced using the [rCharts](http://ramnathv.github.io/rCharts/) package for the [R statistical programming language](http://www.r-project.org/) can be found in the "Complex" vignette.
+
+## Static Figures
+Figures should always be located in the `img` subdirectory of the document folder in order to be included directly into the document.  The first figure is included without the need to resize the .png image, and so the markdown code is fairly simple:
+
+```R
+!['An Image File in the /img Directory.'](img/Fig_1.png)
+```
+
+!["An Image File in the /img Directory."](img/Fig_1.png)
+
+
+## Images from the Web
+Images can also be sourced from the web by including the URL in the code.  Further image formatting and layout features are also available through the use of the "Header Level 5 and 6" caption feature included in the package , as this example also shows in the markdown source file.
+
+```R
+![](http://octodex.github.com/images/baracktocat.jpg)
+```
+
+##### `r Gmisc::figCapNo("The second figure of this document has been sourced from the interwebs.")`
+![](http://octodex.github.com/images/baracktocat.jpg)
+
+# Notes and Citations
+
+Rmarkdown and `pandoc` include extensions to basic markdown that allow for footnotes to be included in the text of the document.  Footnotes will appear in different locations depending on the output fomat type.  They will be all together in one section at the very end of the HTML and DOCX document formats, at the end of each "chapter" (level 1 headings) of the EPUB, and at the bottom of the page it appears on in the PDFs.
+
+Bibliographic entries will be made at the end of the document, and if you have an empty level-1 header, such as the `# References` line at the end of this document, they will appear as an *unnumbered* section in the document.
+
+## Footnote syntax
+Footnotes are supported[^1], and can use different syntax depending on the use case.  Here are the [examples from the `rmarkdown` documentation](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html#footnotes):
+
+Here is a footnote reference,[^2] and another.[^longnote]
+
+[^1]: Thank you `rmarkdown` and `pandoc`!
+[^2]: Here is the footnote. Notice that this is not actually the second footnote, even though it is numbered as "2" in the Rmarkdown source file.
+
+[^longnote]: Here's one with multiple blocks.
+
+    Subsequent paragraphs are indented to show that they 
+    belong to the previous footnote.
+        
+    The whole paragraph can be indented, or just the first
+    line.  In this way, multi-paragraph footnotes work like
+    multi-paragraph list items.
+
+This paragraph won't be part of the note, because it isn't indented.  Finally, inline footnotes are available and convenient. Here is an inline note.^[Inlines notes are easier to write, since
+you don't have to pick an identifier and move down to type the note.]
+
+## Adding a bibliography
+Documentation about how to use citations and include a bibliography in a document can be found online.  [See this link for an excellent resource](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html).  There have been a few references used already to cite the `SGPreports` package [@SGPreports].  A default bibliography is included in the package that includes numerous citations that the authors use.  In this document we use our own bibliography ("`mybibliography.bib`" in the main SGPreports_Vignette directory).  This bibliography includes this package [@SGPreports] and `R` [-@Rsoftware] entries, as well as a fake entry for the venerable Doe and Roe [-@DoeRoe:2015].
+
+Various bibliographic styles are available, although the default is APA 5<sup>th</sup> edition.  Other styles can be found online ([here is one site](https://github.com/citation-style-language/styles)) and implemented by specifying the `csl` argument in either the `multi_document` or `renderMultiDocument` functions.
+
+
+#  References

@@ -7,10 +7,10 @@ tblNum())
 \arguments{
 }
 \description{
-The function relies on \code{options("table_counter")} in
+The function relies on \code{options("table_number")} in
 order to keep track of the current number.
 }
 \examples{
-org_opts <- options(table_counter=1)
+options(table_number=1)
 tblNum()
 }

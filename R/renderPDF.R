@@ -23,7 +23,7 @@ renderPDF <- function (
       if (!file.exists(csl)) {
         stop("The csl file that you've specified can't be found in the file path provided.")
       } else csl <- paste("--csl", csl)
-    } else csl <- paste("--csl", system.file("rmarkdown", "templates", "multi_document", "resources", "apa.csl" , package = "SGPreports"))
+    } else csl <- paste("--csl", system.file("rmarkdown", "templates", "multi_document", "resources", "apa-5th-edition.csl" , package = "SGPreports"))
   }
   
   ###  pandoc args
@@ -157,8 +157,8 @@ renderPDF <- function (
     }
   }
                 
-  message("\n\t Rendering PDF with system call to pandoc:\n\n", 
-          my.pandoc,pdf_md_path, "--to latex --from markdown+autolink_bare_uris+ascii_identifiers --output ", file.path("PDF", gsub(".md", ".pdf", input.md, ignore.case=TRUE)), biblio, " ", csl, "--template ", pdf_template,  pdf_number_sections, highlight, latex_engine, pandoc_args, "\n")
+  message(paste("\n\t Rendering PDF with system call to pandoc:\n\n", 
+          my.pandoc,pdf_md_path, "--to latex --from markdown+autolink_bare_uris+ascii_identifiers --output ", file.path("PDF", gsub(".md", ".pdf", input.md, ignore.case=TRUE)), biblio, " ", csl, "--template ", pdf_template,  pdf_number_sections, highlight, latex_engine, pandoc_args, "\n"))
   if(keep_tex) {
   system(paste(my.pandoc, pdf_md_path, "--to latex --from markdown+autolink_bare_uris+ascii_identifiers --output ", file.path("PDF", gsub(".md", ".tex", input.md, ignore.case=TRUE)), biblio, " ", csl, "--template ", pdf_template,  pdf_number_sections, highlight, latex_engine, pandoc_args))
   }

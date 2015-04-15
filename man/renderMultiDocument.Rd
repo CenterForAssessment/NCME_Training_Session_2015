@@ -2,8 +2,8 @@
 \alias{renderMultiDocument}
 \title{Render R Markdown in Multiple Output Formats}
 \usage{
-render(rmd_input, 
-  output_formats = c("HTML", "EPUB", "PDF"), 
+renderMultiDocument(rmd_input, 
+  output_format = c("HTML", "EPUB", "PDF"), 
   cleanup_aux_files = TRUE,
   number_sections = TRUE,
   number_section_depth=3,

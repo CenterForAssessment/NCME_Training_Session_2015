@@ -8,11 +8,11 @@ tblNumIncrement())
 }
 \description{
 Bump the table number by one.  The function relies 
-on \code{options("table_counter")} in order to keep track of the last number.
+on \code{options("table_number")} in order to keep track of the last number.
 }
 \examples{
-options(table_counter=1)
-getOption("table_counter")
+options(table_number=1)
+getOption("table_number")
 tblNumIncrement()
-getOption("table_counter")
+getOption("table_number")
 }

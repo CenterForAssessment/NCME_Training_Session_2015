@@ -23,7 +23,7 @@ multi_document <- function (
 	### Initial checks of alternative css and/or pandoc template
   
   ##  CSS check from Grmd::docx_document - credit to Max Gordon/Gforge https://github.com/gforge
-  if (css != "default") {
+  if (any(css != "default")) {
     if (!all(sapply(css, file.exists))) {
       alt_css <- list.files(pattern = ".css$")
       if (length(alt_css) > 0) {
@@ -41,14 +41,23 @@ multi_document <- function (
            getwd(), "'", " - i.e. the directory where you have your .Rmd-file", alt_css)
     }
   } else css <- system.file("rmarkdown", "templates", "multi_document", "resources", "report.css" , package = "SGPreports")
-
+	if (any(css != "-default")) {
+		css <- c(css, system.file("rmarkdown", "templates", "multi_document", "resources", "report.css" , package = "SGPreports"))
+	}
+	
   ##  Check csl file  
   if (!is.null(csl)) {
     if (csl != "default") {
       if (!file.exists(csl)) {
         stop("The csl file that you've specified can't be found in the file path provided.")
-      } else pandoc_args <- c(pandoc_args, "--csl", csl)
-    } else pandoc_args <- c(pandoc_args, "--csl", system.file("rmarkdown", "templates", "multi_document", "resources", "apa.csl" , package = "SGPreports"))
+      } else {
+      	pandoc_args <- c(pandoc_args, "--csl", csl)
+      	csl <- NULL
+      }
+    } else {
+    	pandoc_args <- c(pandoc_args, "--csl", system.file("rmarkdown", "templates", "multi_document", "resources", "apa.csl" , package = "SGPreports"))
+    	csl <- NULL
+    }
   }
   
   if (template != "default") {
@@ -65,9 +74,11 @@ multi_document <- function (
     if (bibliography == "default") {
       pandoc_args <-c(pandoc_args, "--filter", my.pandoc_citeproc, "--bibliography", 
                       system.file("rmarkdown", "templates", "multi_document", "resources", "educ.bib" , package = "SGPreports"))
-    } else {
+      bibliography <- NULL
+     } else {
       if(file.exists(bibliography)) {
         pandoc_args <-c(pandoc_args, "--filter", my.pandoc_citeproc, "--bibliography", bibliography)
+        bibliography <- NULL
       } else stop("'bibliography' file not found.")
     }
   }
